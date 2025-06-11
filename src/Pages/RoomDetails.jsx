@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
 import toast from 'react-hot-toast';
+import { FaStar } from 'react-icons/fa';
 
 const RoomDetails = () => {
     const { title, image, roomType, _id, price } = useLoaderData();
@@ -27,7 +28,6 @@ const RoomDetails = () => {
     // Check if user has already booked this room
     useEffect(() => {
         if (!user?.email) return;
-
         fetch(`${import.meta.env.VITE_baseurl}/my-booking?roomId=${_id}&userEmail=${user?.email}`)
             .then(res => res.json())
             .then(data => setAlreadyBooked(data.alreadyBooked))
@@ -105,6 +105,16 @@ const RoomDetails = () => {
                         {reviews.map((review, idx) => (
                             <li key={idx} className="border p-2 rounded shadow-sm">
                                 <p><strong>{review.user}</strong>: {review.comment}</p>
+                                <div className="flex items-center mb-2">
+                                    {[...Array(5)].map((_, idx) => (
+                                        <FaStar
+                                            key={idx}
+                                            size={18}
+                                            color={idx < review.rating ? '#ffc107' : '#e4e5e9'}
+                                        />
+                                    ))}
+                                </div>
+                                <p> {review.timestamp}</p>
                             </li>
                         ))}
                     </ul>
