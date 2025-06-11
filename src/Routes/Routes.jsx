@@ -7,6 +7,9 @@ import Profile from "../Pages/Profile";
 import UpdateProfile from "../Pages/updateProfile";
 import ForgetPassword from "../Pages/ForgetPassword";
 import AllRooms from "../Pages/AllRooms";
+import AddRooms from "../Pages/AddRooms";
+import RoomDetails from "../Pages/RoomDetails";
+import MyBooking from "../Pages/MyBooking";
 
 export const router = createBrowserRouter([
     {
@@ -39,7 +42,21 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allRooms',
-                Component: AllRooms
+                Component: AllRooms,
+                loader: () => fetch(`${import.meta.env.VITE_baseurl}/rooms`)
+            },
+            {
+                path: '/rooms/:id',
+                Component: RoomDetails,
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_baseurl}/rooms/${params.id}`)
+            },
+            {
+                path: '/addRooms',
+                Component: AddRooms
+            },
+            {
+                path: 'myBooking',
+                Component: MyBooking,
             }
         ]
     },

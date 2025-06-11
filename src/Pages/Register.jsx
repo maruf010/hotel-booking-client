@@ -21,16 +21,16 @@ const Register = () => {
         console.log(userProfile);
 
         // pass validation
-        // if (password.length < 6) {
-        //     toast.error('Password must be at least 6 characters long')
-        //     return
-        // } else if (!/[A-Z]/.test(password)) {
-        //     toast.error('Must contain at least one Uppercase letter')
-        //     return
-        // } else if (!/[a-z]/.test(password)) {
-        //     toast.error('Must contain at least one Lowercase letter')
-        //     return
-        // }
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters long')
+            return
+        } else if (!/[A-Z]/.test(password)) {
+            toast.error('Must contain at least one Uppercase letter')
+            return
+        } else if (!/[a-z]/.test(password)) {
+            toast.error('Must contain at least one Lowercase letter')
+            return
+        }
 
         // createUser(userProfile)
         createUser(email, password)
@@ -124,7 +124,7 @@ const Register = () => {
                             </div>
 
                             <button type='submit' className='btn btn-neutral mt-4'>
-                                Sign Up
+                                Register
                             </button>
 
                             {/* google register */}

@@ -17,8 +17,8 @@ const Navbar = () => {
 
                 className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500  ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>Home</NavLink>
             <NavLink to='/allRooms' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>All Rooms</NavLink>
-            <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>Add Room</NavLink>
-            <NavLink to='/' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>My Booking</NavLink>
+            <NavLink to='/addRooms' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>Add Room</NavLink>
+            <NavLink to='/myBooking' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>My Booking</NavLink>
         </div>
     )
     const handleLogout = () => {
@@ -244,13 +244,13 @@ const Navbar = () => {
                                 {user ? (
                                     <div>
                                         <Link to='/profile' className='text-lg'>
-                                            <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-white cursor-pointer transition-colors delay-100 duration-200'>
+                                            <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                 Profile
                                             </div>
                                         </Link>
                                         <button
                                             onClick={handleLogout}
-                                            className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-white cursor-pointer transition-colors delay-100 duration-200'
+                                            className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'
                                         >
                                             Logout
                                         </button>

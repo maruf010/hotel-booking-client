@@ -7,6 +7,8 @@ import {
 import { router } from './Routes/Routes';
 import AuthProvider from './Contexts/AuthProvider';
 import { Toaster } from 'react-hot-toast';
+import 'leaflet/dist/leaflet.css';
+
 
 
 createRoot(document.getElementById('root')).render(
