@@ -20,7 +20,7 @@ const RoomsCard = ({ room }) => {
                         <strong>Features:</strong> 
                         {
                             features.map((feature, index) => (
-                                <span key={index} className="text-blue-500 badge badge-outline mx-1">{feature}</span>
+                                <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
                             ))
                         }
                     </div>
@@ -28,7 +28,7 @@ const RoomsCard = ({ room }) => {
                         <strong>Facilities:</strong> 
                         {
                             facilities.map((facility, index) => (
-                                <span key={index} className="text-blue-500 badge badge-outline mx-1">{facility}</span>
+                                <span key={index} className="text-blue-500 badge badge-outline m-1">{facility}</span>
                             ))
                         }
                     </div>

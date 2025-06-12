@@ -5,16 +5,19 @@ import { AuthContext } from '../Contexts/AuthContext';
 import { Link } from 'react-router';
 
 const MyAddRooms = () => {
-    const user = useContext(AuthContext);
+    const {user} = useContext(AuthContext);
+    console.log(user.email);
+    
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        if (!user?.email) return; // Wait for user to be loaded
-        fetch(`${import.meta.env.VITE_baseurl}/rooms?userEmail=${user.email}`)
+        if (!user?.email) return;
+        fetch(`${import.meta.env.VITE_baseurl}/rooms?email=${user.email}`)
             .then(res => res.json())
             .then(data => setRooms(data))
             .catch(error => console.error('Error fetching added rooms:', error));
     }, [user?.email]);
+
 
 
     const handleDelete = (id) => {
@@ -50,14 +53,14 @@ const MyAddRooms = () => {
             </Helmet>
             <div className='min-h-screen mx-3 lg:w-11/12 lg:mx-auto space-y-6 my-5'>
                 <h2 className="text-2xl font-bold mb-4 text-center">My Added Rooms</h2>
-                {rooms.length === 0 && (
+                {rooms?.length === 0 && (
                     <div className="text-center my-5">
                         <p className="mb-3 text-gray-600">You haven't added any rooms yet.</p>
                         <Link to="/addRooms" className="btn btn-primary">Add Room</Link>
                     </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {rooms.map(room => (
+                    {rooms?.map(room => (
                         <div key={room._id} className="bg-base-200 p-4 rounded-lg shadow">
                             <img src={room.image} alt={room.roomType} className="w-full h-40 object-cover rounded mb-3" />
                             <h3 className="text-xl font-semibold mb-1">{room.roomType}</h3>

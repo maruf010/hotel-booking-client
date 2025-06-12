@@ -125,7 +125,7 @@ const MyBooking = () => {
                                         <td>{booking.roomType}</td>
                                         <td>{new Date(booking.date).toDateString()}</td>
                                         <td>{booking.price} BDT</td>
-                                        <td className="space-x-2 space-y-2 md:space-y-0">
+                                        <td className="flex gap-2">
                                             <button className="btn btn-warning btn-sm" onClick={() => {
                                                 setSelectedBooking(booking);
                                                 setModalType('update');
@@ -150,12 +150,13 @@ const MyBooking = () => {
                 {/* update date */}
                 {showModal && (
                     <dialog className="modal modal-open">
-                        <div className="bg-gray-200 p-5 rounded-2xl lg:w-1/3">
-                            <h3 className="font-bold text-lg mb-4">
+                        <div className="bg-base-100 border border-orange-400 p-5 rounded-2xl lg:w-1/3">
+                            <h3 className="font-bold text-xl mb-4 text-orange-500">
                                 {modalType === 'cancel' ? 'Confirm Cancellation' : 'Update Booking Date'}
                             </h3>
                             {modalType === 'update' && (
                                 <DatePicker
+                                placeholderText='Select a new date'
                                     selected={newDate}
                                     onChange={(date) => setNewDate(date)}
                                     minDate={new Date()}
@@ -176,9 +177,9 @@ const MyBooking = () => {
                 {/* rating modal */}
                 {reviewModal && (
                     <dialog className="modal modal-open">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg mb-4">Give Your Review</h3>
-                            <p className="mb-2">User: {user.displayName}</p>
+                        <div className="modal-box border border-orange-500">
+                            <h3 className="font-bold text-xl mb-4  text-orange-500">Give Your Review</h3>
+                            <p className="mb-2 font-medium text-lg">User: <span className='text-blue-500'>{user.displayName}</span></p>
                             <div className="flex mb-3">
                                 {[...Array(5)].map((_, index) => {
                                     const current = index + 1;
@@ -209,7 +210,7 @@ const MyBooking = () => {
                                 onChange={(e) => setReviewText(e.target.value)}
                             ></textarea>
                             <div className="modal-action">
-                                <button className="btn btn-outline" onClick={() => setReviewModal(false)}>Close</button>
+                                <button className="btn btn-outline text-orange-500 border border-orange-500" onClick={() => setReviewModal(false)}>Close</button>
                                 <button className="btn btn-primary" onClick={handleReviewSubmit}>Submit</button>
                             </div>
                         </div>

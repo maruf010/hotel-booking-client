@@ -1,9 +1,9 @@
 import React from 'react';
 import Banner from '../components/Banner';
-import HotelDetails from '../components/HotelDetails';
 import FeaturedRooms from '../components/FeaturedRooms';
 import { Helmet } from 'react-helmet-async';
-import HomeReviews from '../components/HomeReviews';
+import ReviewCarousel from '../components/ReviewCarousel';
+
 
 const Home = () => {
     return (
@@ -14,8 +14,7 @@ const Home = () => {
             <div>
                 <Banner></Banner>
                 <FeaturedRooms></FeaturedRooms>
-                <HomeReviews></HomeReviews>
-                <HotelDetails></HotelDetails>
+                <ReviewCarousel></ReviewCarousel>
             </div>
         </>
     );

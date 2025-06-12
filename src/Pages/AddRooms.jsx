@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Contexts/AuthContext';
 
 
 
 const AddRooms = () => {
-
+    const { user } = useContext(AuthContext);
+    const email = user.email;
     const navigate = useNavigate();
     const handleAddRoom = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const newRoom = Object.fromEntries(formData.entries())
+        newRoom.email = email;
 
         const featuresString = newRoom.features.split(',').map(feature => feature.trim());
         const facilitiesString = newRoom.facilities.split(',').map(facility => facility.trim());
@@ -55,7 +58,7 @@ const AddRooms = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                             <label className="label">Select Room Type</label>
-                            <select name='roomType' type="text" className="input w-full" placeholder="Select Room Type">
+                            <select name='roomType' type="text" className="input w-full" placeholder="Select Room Type" required>
                                 <option value="Deluxe Double Room">Deluxe Double Room</option>
                                 <option value="Standard Single Room">Standard Single Room</option>
                                 <option value="Family Suite">Family Suite</option>
@@ -65,22 +68,22 @@ const AddRooms = () => {
                         </fieldset>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                             <label className="label">Rooms Photo URL</label>
-                            <input name='image' type="text" className="input w-full" placeholder="Photo URL" />
+                            <input name='image' type="text" className="input w-full" placeholder="Photo URL" required />
                         </fieldset>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                             <label className="label">Room features</label>
-                            <input name='features' type="text" className="input w-full" placeholder="Room features" />
+                            <input name='features' type="text" className="input w-full" placeholder="Room features" required />
                         </fieldset>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                             <label className="label">Hotel Facilities</label>
-                            <input name='facilities' type="text" className="input w-full" placeholder="Hotel Facilities" />
+                            <input name='facilities' type="text" className="input w-full" placeholder="Hotel Facilities" required />
                         </fieldset>
                         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
                             <label className="label">Price per Night</label>
-                            <input name='price' type="text" className="input w-full" placeholder="Price per Night" />
+                            <input name='price' type="text" className="input w-full" placeholder="Price per Night" required />
                         </fieldset>
                     </div>
-                    <input type="submit" className='bg-green-500 text-white btn mt-4 w-full' value="Add Room" />
+                    <input type="submit" className='bg-orange-500 text-white btn mt-4 w-full' value="Add Room" />
                 </form>
                 <Link to='/'>
                     <button className="btn btn-primary mt-5 w-full">Back to Home</button>

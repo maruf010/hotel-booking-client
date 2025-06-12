@@ -53,12 +53,7 @@ export const router = createBrowserRouter([
             {
                 path: '/rooms/:id',
                 loader: ({ params }) => fetch(`${import.meta.env.VITE_baseurl}/rooms/${params.id}`),
-                element: (
-                    <PrivateRoute>
-                        <RoomDetails></RoomDetails>
-                    </PrivateRoute>
-                ),
-                hydrateFallbackElement: <Loading></Loading>
+                element: <RoomDetails></RoomDetails>
             },
             {
                 path: '/addRooms',

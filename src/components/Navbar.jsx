@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
-import { IoIosLogOut } from 'react-icons/io';
 import toast from 'react-hot-toast';
+import logo from '../assets/logo.jpg';
+
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -94,7 +95,12 @@ const Navbar = () => {
                         )}
                     </ul>
                 </div>
-                <a className="font-bold text-xl">HotelSilkCity</a>
+                <Link to='/'>
+                    <div className='flex-1 flex items-center'>
+                        <img src={logo} alt="Coming soon" className=" w-14 h-14  hidden md:flex" />
+                        <span className='text-orange-500 font-medium ml-1 text-lg lg:text-2xl'>Hotel Silk City</span>
+                    </div>
+                </Link>
             </div>
             <div className="navbar-end hidden lg:flex mr-4">
                 <ul className="menu menu-horizontal px-1">
@@ -156,33 +162,33 @@ const Navbar = () => {
                         </div>
                         <ul
                             tabIndex={0}
-                            className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow border'
+                            className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow border border-orange-500'
                         >
                             <div>
                                 {user ? (
                                     <div>
                                         <Link to='/profile' className='text-lg'>
-                                            <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-white cursor-pointer transition-colors delay-100 duration-200'>
+                                            <div className=' px-2 font-bold py-2 rounded-lg text-orange-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                 Profile
                                             </div>
                                         </Link>
                                         <div>
                                             <Link to='/myAddRooms' className='text-lg'>
-                                                <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
+                                                <div className=' px-2 font-bold py-2 rounded-lg text-orange-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                     My Added Rooms
                                                 </div>
                                             </Link>
                                         </div>
                                         <button
                                             onClick={handleLogout}
-                                            className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-white cursor-pointer transition-colors delay-100 duration-200'
+                                            className='text-lg  px-2 font-bold py-2 rounded-lg text-orange-500   hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'
                                         >
                                             Logout
                                         </button>
                                     </div>
 
                                 ) : (
-                                    <Link to='/login' className='px-4 py-2 text-lg'>
+                                    <Link to='/login' className='text-orange-500 px-4 py-2 text-lg'>
                                         Login
                                     </Link>
                                 )}

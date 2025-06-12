@@ -35,12 +35,12 @@ const FeaturedRooms = () => {
                             alt="soon"
                             className="w-full h-64 object-cover rounded-md mb-4"
                         />
-                        <h3 className="text-xl font-semibold mb-1 dark:text-blue-500">Room Type : {room.roomType}</h3>
+                        <h3 className="text-xl font-semibold mb-1 text-orange-500">Room Type : {room.roomType}</h3>
                         <div className="text-gray-600 text-sm mb-1">
                             <strong>Features:</strong> 
                             {
                             room?.features.map((feature, index) => (
-                                <span key={index} className="text-blue-500 badge badge-outline mx-1">{feature}</span>
+                                <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
                             ))
                             }
                         </div>
@@ -48,7 +48,7 @@ const FeaturedRooms = () => {
                             <strong>Facilities:</strong> 
                             {
                                 room?.facilities.map((facility, index) => (
-                                    <span key={index} className="text-blue-500 badge badge-outline mx-1">{facility}</span>
+                                    <span key={index} className="text-blue-500 badge badge-outline m-1">{facility}</span>
                                 ))
                             }
                         </div>
@@ -70,7 +70,7 @@ const FeaturedRooms = () => {
 
                         <button
                             onClick={() => navigate(`/rooms/${room._id}`)}
-                            className="btn btn-primary w-full"
+                            className="btn btn-primary border-none bg-orange-500 w-full"
                         >
                             Book Now
                         </button>

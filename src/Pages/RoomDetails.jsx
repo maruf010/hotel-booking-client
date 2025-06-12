@@ -106,17 +106,25 @@ const RoomDetails = () => {
                             <button
                                 className="btn btn-primary"
                                 disabled={alreadyBooked}
-                                onClick={() => setShowModal(true)}
+                                onClick={() => {
+                                    if (!user) {
+                                        toast.error('You must be logged in to book a room.');
+                                        navigate('/login');
+                                    } else {
+                                        setShowModal(true);
+                                    }
+                                }}
                             >
                                 {alreadyBooked ? 'Already Booked' : 'Book Now'}
                             </button>
+
                         </div>
                     </div>
                 </div>
 
                 {/* Reviews Section */}
                 <div>
-                    <h3 className="text-xl font-bold">Reviews</h3>
+                    <h3 className="text-2xl font-bold my-2">Reviews</h3>
                     {reviews.length === 0 ? (
                         <p className="text-gray-500">No reviews yet for this room.</p>
                     ) : (
@@ -144,7 +152,7 @@ const RoomDetails = () => {
                 {showModal && (
                     <dialog className="modal w-full modal-open ">
                         <div className="mx-5 lg:mx-auto lg:w-8/12 ">
-                            <div className='bg-gray-200 dark:text-black rounded-xl p-3 shadow-[0px_0px_20px_0px_rgba(156,39,176,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
+                            <div className='bg-gray-400 rounded-xl p-3 shadow-[0px_0px_20px_0px_rgba(156,39,176,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                                 <h2 className="text-2xl font-semibold mb-4">Confirm Your Booking</h2>
                                 <div className='md:text-xl space-y-2'>
                                     <p><strong>Room Type:</strong> {roomType}</p>
