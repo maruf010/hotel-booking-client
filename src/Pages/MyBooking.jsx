@@ -4,10 +4,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Contexts/AuthContext';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 const MyBooking = () => {
 
     const { user } = useContext(AuthContext);
+
     const [bookings, setBookings] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState('');
@@ -22,12 +25,16 @@ const MyBooking = () => {
     const fetchBookings = () => {
         fetch(`${import.meta.env.VITE_baseurl}/my-bookings?userEmail=${user?.email}`)
             .then(res => res.json())
-            .then(data => setBookings(data));
+            .then(data => {
+                console.log(data);
+                setBookings(data);
+            })
     };
 
     useEffect(() => {
         if (user?.email) fetchBookings();
     }, [user?.email]);
+
 
     const handleCancel = () => {
         fetch(`${import.meta.env.VITE_baseurl}/cancel-booking/${selectedBooking._id}`, {
@@ -44,6 +51,7 @@ const MyBooking = () => {
                 setShowModal(false);
             });
     };
+
 
     const handleUpdate = () => {
         fetch(`${import.meta.env.VITE_baseurl}/update-booking/${selectedBooking._id}`, {
@@ -85,120 +93,130 @@ const MyBooking = () => {
 
 
     return (
-        <div className="min-h-screen lg:max-w-6xl mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-6">My Bookings</h2>
-            {bookings.length === 0 ? (
-                <p>You have no bookings yet.</p>
-            ) : (
-                <div className="overflow-x-auto">
-                    <table className="table w-full">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Room</th>
-                                <th>Date</th>
-                                <th>Price</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {bookings.map((booking, idx) => (
-                                <tr key={idx} className="hover">
-                                    <td><img src={booking?.image} alt='coming soon' className="w-16 h-16 object-cover rounded" /></td>
-                                    <td>{booking.title}</td>
-                                    <td>{new Date(booking.date).toDateString()}</td>
-                                    <td>{booking.price} BDT</td>
-                                    <td className="space-x-2">
-                                        <button className="btn btn-warning btn-sm" onClick={() => {
-                                            setSelectedBooking(booking);
-                                            setModalType('update');
-                                            setShowModal(true);
-                                        }}>Update Date</button>
-                                        <button className="btn btn-error btn-sm" onClick={() => {
-                                            setSelectedBooking(booking);
-                                            setModalType('cancel');
-                                            setShowModal(true);
-                                        }}>Cancel</button>
-                                        <button className="btn btn-info btn-sm" onClick={() => {
-                                            setSelectedBooking(booking);
-                                            setReviewModal(true);
-                                        }}>Review</button>
-                                    </td>
+        <>
+            <Helmet>
+                <title>Hotel Silk City | My Booking</title>
+            </Helmet>
+            <div className="min-h-screen lg:max-w-11/12 mx-auto p-4">
+                <h2 className="text-2xl font-bold mb-6 text-center">My Bookings</h2>
+                {bookings.length === 0 ? (
+                    <div className="text-center border py-4 rounded-lg bg-gray-100">
+                        <p className='mb-5'>You have no bookings yet.</p>
+                        <Link to='/allRooms' >
+                            <span className='text-blue-500 border rounded-xl p-2'>Browse Rooms</span>
+                        </Link>
+                    </div>
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Room Type</th>
+                                    <th>Booking Date</th>
+                                    <th>Price</th>
+                                    <th>Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            )}
-
-            {showModal && (
-                <dialog className="modal modal-open">
-                    <div className="bg-gray-200 p-5 rounded-2xl lg:w-1/3">
-                        <h3 className="font-bold text-lg mb-4">
-                            {modalType === 'cancel' ? 'Confirm Cancellation' : 'Update Booking Date'}
-                        </h3>
-                        {modalType === 'update' && (
-                            <DatePicker
-                                selected={newDate}
-                                onChange={(date) => setNewDate(date)}
-                                minDate={new Date()}
-                                className="input input-bordered w-full"
-                            />
-                        )}
-                        <div className="modal-action">
-                            <button className="btn btn-outline" onClick={() => setShowModal(false)}>Close</button>
-                            {modalType === 'cancel' ? (
-                                <button className="btn btn-error" onClick={handleCancel}>Confirm Cancel</button>
-                            ) : (
-                                <button className="btn btn-success" onClick={handleUpdate}>Update</button>
+                            </thead>
+                            <tbody>
+                                {bookings.map((booking, index) => (
+                                    <tr key={index} className="hover">
+                                        <td><img src={booking?.image} alt='coming soon' className="w-16 h-16 object-cover rounded" /></td>
+                                        <td>{booking.roomType}</td>
+                                        <td>{new Date(booking.date).toDateString()}</td>
+                                        <td>{booking.price} BDT</td>
+                                        <td className="space-x-2 space-y-2 md:space-y-0">
+                                            <button className="btn btn-warning btn-sm" onClick={() => {
+                                                setSelectedBooking(booking);
+                                                setModalType('update');
+                                                setShowModal(true);
+                                            }}>Update Date</button>
+                                            <button className="btn btn-error btn-sm" onClick={() => {
+                                                setSelectedBooking(booking);
+                                                setModalType('cancel');
+                                                setShowModal(true);
+                                            }}>Cancel</button>
+                                            <button className="btn btn-info btn-sm" onClick={() => {
+                                                setSelectedBooking(booking);
+                                                setReviewModal(true);
+                                            }}>Review</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+                {/* update date */}
+                {showModal && (
+                    <dialog className="modal modal-open">
+                        <div className="bg-gray-200 p-5 rounded-2xl lg:w-1/3">
+                            <h3 className="font-bold text-lg mb-4">
+                                {modalType === 'cancel' ? 'Confirm Cancellation' : 'Update Booking Date'}
+                            </h3>
+                            {modalType === 'update' && (
+                                <DatePicker
+                                    selected={newDate}
+                                    onChange={(date) => setNewDate(date)}
+                                    minDate={new Date()}
+                                    className="input input-bordered w-full"
+                                />
                             )}
+                            <div className="modal-action">
+                                <button className="btn btn-outline" onClick={() => setShowModal(false)}>Close</button>
+                                {modalType === 'cancel' ? (
+                                    <button className="btn btn-error" onClick={handleCancel}>Confirm Cancel</button>
+                                ) : (
+                                    <button className="btn btn-success" onClick={handleUpdate}>Update</button>
+                                )}
+                            </div>
                         </div>
-                    </div>
-                </dialog>
-            )}
-
-            {reviewModal && (
-                <dialog className="modal modal-open">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg mb-4">Give Your Review</h3>
-                        <p className="mb-2">User: {user.displayName}</p>
-                        <div className="flex mb-3">
-                            {[...Array(5)].map((_, index) => {
-                                const current = index + 1;
-                                return (
-                                    <label key={index}>
-                                        <input
-                                            type="radio"
-                                            name="rating"
-                                            value={current}
-                                            onClick={() => setRating(current)}
-                                            className="hidden"
-                                        />
-                                        <FaStar
-                                            size={24}
-                                            className="cursor-pointer"
-                                            color={current <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
-                                            onMouseEnter={() => setHover(current)}
-                                            onMouseLeave={() => setHover(null)}
-                                        />
-                                    </label>
-                                );
-                            })}
+                    </dialog>
+                )}
+                {/* rating modal */}
+                {reviewModal && (
+                    <dialog className="modal modal-open">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg mb-4">Give Your Review</h3>
+                            <p className="mb-2">User: {user.displayName}</p>
+                            <div className="flex mb-3">
+                                {[...Array(5)].map((_, index) => {
+                                    const current = index + 1;
+                                    return (
+                                        <label key={index}>
+                                            <input
+                                                type="radio"
+                                                name="rating"
+                                                value={current}
+                                                onClick={() => setRating(current)}
+                                                className="hidden"
+                                            />
+                                            <FaStar
+                                                size={24}
+                                                className="cursor-pointer"
+                                                color={current <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+                                                onMouseEnter={() => setHover(current)}
+                                                onMouseLeave={() => setHover(null)}
+                                            />
+                                        </label>
+                                    );
+                                })}
+                            </div>
+                            <textarea
+                                className="textarea textarea-bordered w-full"
+                                placeholder="Write your review..."
+                                value={reviewText}
+                                onChange={(e) => setReviewText(e.target.value)}
+                            ></textarea>
+                            <div className="modal-action">
+                                <button className="btn btn-outline" onClick={() => setReviewModal(false)}>Close</button>
+                                <button className="btn btn-primary" onClick={handleReviewSubmit}>Submit</button>
+                            </div>
                         </div>
-                        <textarea
-                            className="textarea textarea-bordered w-full"
-                            placeholder="Write your review..."
-                            value={reviewText}
-                            onChange={(e) => setReviewText(e.target.value)}
-                        ></textarea>
-                        <div className="modal-action">
-                            <button className="btn btn-outline" onClick={() => setReviewModal(false)}>Close</button>
-                            <button className="btn btn-primary" onClick={handleReviewSubmit}>Submit</button>
-                        </div>
-                    </div>
-                </dialog>
-            )}
-        </div>
+                    </dialog>
+                )}
+            </div>
+        </>
     );
 };
 

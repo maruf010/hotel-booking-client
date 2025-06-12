@@ -10,11 +10,16 @@ import AllRooms from "../Pages/AllRooms";
 import AddRooms from "../Pages/AddRooms";
 import RoomDetails from "../Pages/RoomDetails";
 import MyBooking from "../Pages/MyBooking";
+import MyAddRooms from "../Pages/MyAddRooms";
+import ErrorPage from "../Pages/ErrorPage";
+import PrivateRoute from "../Contexts/PrivateRoute";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         Component: Root,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 index: true,
@@ -42,21 +47,45 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/allRooms',
-                Component: AllRooms,
-                loader: () => fetch(`${import.meta.env.VITE_baseurl}/rooms`)
+                loader: () => fetch(`${import.meta.env.VITE_baseurl}/rooms`),
+                element: <AllRooms></AllRooms>
             },
             {
                 path: '/rooms/:id',
-                Component: RoomDetails,
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_baseurl}/rooms/${params.id}`)
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_baseurl}/rooms/${params.id}`),
+                element: (
+                    <PrivateRoute>
+                        <RoomDetails></RoomDetails>
+                    </PrivateRoute>
+                ),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
                 path: '/addRooms',
-                Component: AddRooms
+                element: (
+                    <PrivateRoute>
+                        <AddRooms></AddRooms>
+                    </PrivateRoute>
+                ),
+                hydrateFallbackElement: <Loading></Loading>
             },
             {
-                path: 'myBooking',
-                Component: MyBooking,
+                path: '/myBooking',
+                element: (
+                    <PrivateRoute>
+                        <MyBooking></MyBooking>
+                    </PrivateRoute>
+                ),
+                hydrateFallbackElement: <Loading></Loading>
+            },
+            {
+                path: '/myAddRooms',
+                element: (
+                    <PrivateRoute>
+                        <MyAddRooms></MyAddRooms>
+                    </PrivateRoute>
+                ),
+                hydrateFallbackElement: <Loading></Loading>
             }
         ]
     },

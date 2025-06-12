@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 
 const Register = () => {
@@ -66,6 +67,9 @@ const Register = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Hotel Silk City | Register</title>
+            </Helmet>
             <div className='min-h-screen justify-center flex items-center font-three md:mx-auto mx-3 card'>
                 <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-[0px_0px_15px_0px_rgba(255,85,85,0.5),0px_0px_30px_0px_rgba(0,0,255,0.5)]'>
                     <div className='card-body'>

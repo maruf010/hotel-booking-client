@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthContext';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { login, loginWithGoogle } = useContext(AuthContext)
@@ -49,6 +50,9 @@ const Login = () => {
     }
     return (
         <>
+        <Helmet>
+            <title>Hotel Silk City | Login</title>
+        </Helmet>
             <div className='flex justify-center items-center min-h-screen font-three md:mx-auto mx-3 '>
                 <div className='md:mx-auto card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_15px_0px_rgba(255,85,85,0.5),0px_0px_30px_0px_rgba(0,0,255,0.5)]'>
                     <div className='card-body'>

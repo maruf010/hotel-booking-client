@@ -60,13 +60,13 @@ const Banner = () => {
                                 </p>
                                 <Link to='/allRooms'>
                                     <div className="mx-auto flex justify-center mt-3" data-aos="fade-down-right" data-aos-offset="100" >
-                                        <a className="px-5 py-3 relative rounded group text-white font-medium inline-block">
+                                        <div className="px-5 py-3 relative rounded group text-white font-medium inline-block">
                                             <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                                             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
                                             <span className="relative ">Rooms</span>
-                                        </a>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
@@ -89,13 +89,13 @@ const Banner = () => {
                                 </p>
                                 <Link to='/allRooms'>
                                     <div className="mx-auto flex justify-center mt-3" data-aos="fade-down-right" data-aos-offset="100" >
-                                        <a className="px-5 py-3 relative rounded group text-white font-medium inline-block">
+                                        <div className="px-5 py-3 relative rounded group text-white font-medium inline-block">
                                             <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                                             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
                                             <span className="relative ">Rooms</span>
-                                        </a>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
@@ -117,13 +117,13 @@ const Banner = () => {
                                     Enjoy serenity by the water with rustic elegance, kayak rentals, and starlit evenings on the private dock.                                </p>
                                 <Link to='/allRooms'>
                                     <div className="mx-auto flex justify-center mt-3" data-aos="fade-down-right" data-aos-offset="100" >
-                                        <a className="px-5 py-3 relative rounded group text-white font-medium inline-block">
+                                        <div className="px-5 py-3 relative rounded group text-white font-medium inline-block">
                                             <span className="absolute top-0 left-0 w-full h-full rounded opacity-50 filter blur-sm bg-gradient-to-br from-purple-600 to-blue-500"></span>
                                             <span className="h-full w-full inset-0 absolute mt-0.5 ml-0.5 bg-gradient-to-br filter group-active:opacity-0 rounded opacity-50 from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition-all duration-200 ease-out rounded shadow-xl bg-gradient-to-br filter group-active:opacity-0 group-hover:blur-sm from-purple-600 to-blue-500"></span>
                                             <span className="absolute inset-0 w-full h-full transition duration-200 ease-out rounded bg-gradient-to-br to-purple-600 from-blue-500"></span>
                                             <span className="relative ">Rooms</span>
-                                        </a>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>

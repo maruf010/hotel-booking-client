@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router';
 import { FaRegEdit } from "react-icons/fa";
 import { AuthContext } from '../Contexts/AuthContext';
-// import { Helmet } from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 
 
 const Profile = () => {
@@ -12,9 +12,9 @@ const Profile = () => {
 
     return (
         <>
-            {/* <Helmet>
-            <title>Profile</title>
-        </Helmet> */}
+            <Helmet>
+                <title>Profile</title>
+            </Helmet>
             <div className='font-three min-h-screen  bg-fuchsia-100 py-10 px-3 md:px-0'>
                 <h2 className='text-3xl font-bold text-fuchsia-500 text-center mb-5 md:mb-16 mt-10'>User Profile</h2>
                 <div className='flex justify-center'>

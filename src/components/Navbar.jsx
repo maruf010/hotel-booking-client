@@ -94,7 +94,7 @@ const Navbar = () => {
                         )}
                     </ul>
                 </div>
-                <a className="font-bold text-xl">RoomVarse</a>
+                <a className="font-bold text-xl">HotelSilkCity</a>
             </div>
             <div className="navbar-end hidden lg:flex mr-4">
                 <ul className="menu menu-horizontal px-1">
@@ -166,6 +166,13 @@ const Navbar = () => {
                                                 Profile
                                             </div>
                                         </Link>
+                                        <div>
+                                            <Link to='/myAddRooms' className='text-lg'>
+                                                <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
+                                                    My Added Rooms
+                                                </div>
+                                            </Link>
+                                        </div>
                                         <button
                                             onClick={handleLogout}
                                             className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-white cursor-pointer transition-colors delay-100 duration-200'
@@ -248,6 +255,13 @@ const Navbar = () => {
                                                 Profile
                                             </div>
                                         </Link>
+                                        <div>
+                                            <Link to='/myAddRooms' className='text-lg'>
+                                                <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
+                                                    My Added Rooms
+                                                </div>
+                                            </Link>
+                                        </div>
                                         <button
                                             onClick={handleLogout}
                                             className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'
