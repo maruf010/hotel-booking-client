@@ -13,8 +13,10 @@ const RoomDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [alreadyBooked, setAlreadyBooked] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
+
 
 
     // Fetch room reviews
@@ -25,23 +27,33 @@ const RoomDetails = () => {
             .catch(err => console.error(err));
     }, [_id]);
 
-
-    // Check if user has already booked this room
+    // Check if this room is already booked
     useEffect(() => {
-        if (!user?.email) return;
-        fetch(`${import.meta.env.VITE_baseurl}/my-booking?roomId=${_id}&userEmail=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setAlreadyBooked(data.alreadyBooked))
-            .catch(err => console.error(err));
-    }, [_id, user?.email]);
+        const fetchAlreadyBooked = async () => {
+            setLoading(true);
+            const res = await fetch(`${import.meta.env.VITE_baseurl}/already-booking?roomId=${_id}`);
+            const data = await res.json();
+            setAlreadyBooked(data.alreadyBooked);
+            setLoading(false);
+        };
+        fetchAlreadyBooked();
+    }, [_id]);
+
+    if (loading) {
+        return (
+            <div className="flex justify-center items-center min-h-screen">
+                <span className="loading loading-spinner text-primary text-5xl"></span>
+            </div>
+        );
+    }
 
 
-    const handleBooking = () => {
+    // Handle booking confirmation
+    const handleBooking = async () => {
         if (!selectedDate) {
             toast.error('Please select a booking date.');
             return;
         }
-
 
         const bookingInfo = {
             roomId: _id,
@@ -52,72 +64,74 @@ const RoomDetails = () => {
             userEmail: user.email,
         };
 
-        fetch(`${import.meta.env.VITE_baseurl}/book-room`, {
+        // Check if the room is already booked
+        const response = await fetch(`${import.meta.env.VITE_baseurl}/book-room`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(bookingInfo),
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    setAlreadyBooked(true);
-                    setShowModal(false);
-                    toast.success('Room booked successfully!');
-                    navigate('/myBooking');
-                } else {
-                    toast.error(data.message || 'Booking failed');
-                }
-            });
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            setAlreadyBooked(true);
+            setShowModal(false);
+            toast.success('Room booked successfully!');
+            navigate('/myBooking');
+        } else {
+            toast.error(result.message || 'Booking failed.');
+        }
     };
+
 
     return (
         <>
             <Helmet>
                 <title>Hotel Silk City | Room Details</title>
             </Helmet>
-            <div className='min-h-screen mx-3  space-y-6 my-5 lg:max-w-11/12 lg:mx-auto'>
-                <div className="flex flex-col md:flex-row  shadow-xl">
+            <div className='min-h-screen mx-3 space-y-6 my-5 lg:max-w-11/12 lg:mx-auto'>
+                <div className="flex flex-col md:flex-row shadow-xl">
                     <div className='flex-1'>
                         <img src={image} className="w-full h-96" alt="Room" />
                     </div>
                     <div className="flex-1 p-5 space-y-5 bg-base-200">
                         <h2 className="card-title text-3xl font-bold">
                             {roomType}
-                            <div className="badge badge-secondary">
-                                {alreadyBooked ? 'Booked' : 'Available'}
+                            <div className="badge badge-secondary ml-3">
+                                {alreadyBooked ? 'Unavailable' : 'Available'}
                             </div>
                         </h2>
-                        <div className="mb-3 text-gray-600 text-lg ">
+                        <div className="mb-3 text-gray-600 text-lg">
                             <strong>Features:</strong>
-                            {
-                                features.map((feature, index) => (<span key={index} className="badge badge-outline mx-1">{feature}</span>
-                                ))
-                            }
+                            {features.map((feature, index) => (
+                                <span key={index} className="badge badge-outline mx-1">{feature}</span>
+                            ))}
                         </div>
                         <div className="mb-3 text-gray-600 text-lg">
                             <strong>Facilities:</strong>
-                            {
-                                facilities.map((facility, index) => (<span key={index} className="badge badge-outline mx-1">{facility}</span>
-                                ))
-                            }
+                            {facilities.map((facility, index) => (
+                                <span key={index} className="badge badge-outline mx-1">{facility}</span>
+                            ))}
                         </div>
                         <p className='text-2xl'><span className='text-blue-500'>{price}</span> BDT per/night</p>
                         <div>
                             <button
                                 className="btn btn-primary"
-                                disabled={alreadyBooked}
                                 onClick={() => {
                                     if (!user) {
                                         toast.error('You must be logged in to book a room.');
                                         navigate('/login');
+                                    } else if (alreadyBooked) {
+                                        toast.error('Room Already booked!');
                                     } else {
                                         setShowModal(true);
                                     }
                                 }}
                             >
-                                {alreadyBooked ? 'Already Booked' : 'Book Now'}
+                                Book Now
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -133,15 +147,15 @@ const RoomDetails = () => {
                                 <li key={idx} className="border p-2 rounded shadow-sm">
                                     <p><strong>{review.user}</strong>: {review.comment}</p>
                                     <div className="flex items-center mb-2">
-                                        {[...Array(5)].map((_, idx) => (
+                                        {[...Array(5)].map((_, starIdx) => (
                                             <FaStar
-                                                key={idx}
+                                                key={starIdx}
                                                 size={18}
-                                                color={idx < review.rating ? '#ffc107' : '#e4e5e9'}
+                                                color={starIdx < review.rating ? '#ffc107' : '#e4e5e9'}
                                             />
                                         ))}
                                     </div>
-                                    <p> {review.timestamp}</p>
+                                    <p>{review.timestamp}</p>
                                 </li>
                             ))}
                         </ul>
@@ -150,12 +164,24 @@ const RoomDetails = () => {
 
                 {/* Booking Modal */}
                 {showModal && (
-                    <dialog className="modal w-full modal-open ">
-                        <div className="mx-5 lg:mx-auto lg:w-8/12 ">
-                            <div className='bg-gray-400 rounded-xl p-3 shadow-[0px_0px_20px_0px_rgba(156,39,176,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
+                    <dialog className="modal w-full modal-open">
+                        <div className="mx-5 lg:mx-auto lg:w-8/12">
+                            <div className='bg-gray-400 rounded-xl p-5 shadow-[0px_0px_20px_0px_rgba(156,39,176,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                                 <h2 className="text-2xl font-semibold mb-4">Confirm Your Booking</h2>
                                 <div className='md:text-xl space-y-2'>
                                     <p><strong>Room Type:</strong> {roomType}</p>
+                                    <div className="mb-3 text-gray-600 text-lg">
+                                        <strong>Features:</strong>
+                                        {features.map((feature, index) => (
+                                            <span key={index} className="badge badge-outline mx-1">{feature}</span>
+                                        ))}
+                                    </div>
+                                    <div className="mb-3 text-gray-600 text-lg">
+                                        <strong>Facilities:</strong>
+                                        {facilities.map((facility, index) => (
+                                            <span key={index} className="badge badge-outline mx-1">{facility}</span>
+                                        ))}
+                                    </div>
                                     <p><strong>Price:</strong> {price} BDT</p>
                                 </div>
 
@@ -166,11 +192,19 @@ const RoomDetails = () => {
                                         onChange={(date) => setSelectedDate(date)}
                                         className="input input-bordered w-full"
                                         minDate={new Date()}
+                                        placeholderText='Select a date'
                                     />
                                 </div>
+
                                 <div className="mt-4 flex justify-end space-x-3">
                                     <button className="btn btn-outline" onClick={() => setShowModal(false)}>Cancel</button>
-                                    <button className="btn btn-success" onClick={handleBooking}>Confirm</button>
+                                    <button
+                                        className="btn btn-success"
+                                        onClick={handleBooking}
+                                        disabled={alreadyBooked}
+                                    >
+                                        Confirm
+                                    </button>
                                 </div>
                             </div>
                         </div>

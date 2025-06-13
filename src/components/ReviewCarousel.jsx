@@ -41,7 +41,7 @@ const ReviewCarousel = () => {
                 infinite={true}
                 autoPlaySpeed={2000}
                 arrows={false}
-                showDots={true}
+                
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {reviews.map((review, index) => (
@@ -57,7 +57,7 @@ const ReviewCarousel = () => {
                         </div>
                         <p className="italic text-green-600 text-xl">"{review.comment}"</p>
                         <p className=" text-gray-500 mt-2  text-lg">- {review.user}</p>
-                        <p className=" text-gray-400  text-lg">
+                        <p className=" text-gray-400  text-sm">
                             {new Date(review.timestamp).toLocaleString()}
                         </p>
                     </div>

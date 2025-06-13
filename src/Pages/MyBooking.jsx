@@ -4,13 +4,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Contexts/AuthContext';
 import { FaStar } from 'react-icons/fa';
-import { Link } from 'react-router';
 import { Helmet } from 'react-helmet-async';
+import { myBookingPromise } from '../Api/myBookingApi';
+import { Link } from 'react-router';
 
 const MyBooking = () => {
-
     const { user } = useContext(AuthContext);
-
     const [bookings, setBookings] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState('');
@@ -21,35 +20,30 @@ const MyBooking = () => {
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
 
-
-    const fetchBookings = () => {
-        fetch(`${import.meta.env.VITE_baseurl}/my-bookings?userEmail=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                setBookings(data);
-            })
+    const fetchBookings = async () => {
+        const res = await myBookingPromise(user?.email, user?.accessToken);
+        setBookings(res);
     };
 
     useEffect(() => {
-        if (user?.email) fetchBookings();
-    }, [user?.email]);
+        if (user?.email && user?.accessToken) fetchBookings();
+    }, [user?.email, user?.accessToken]);
 
+    
+    const handleCancel = async () => {
+        const res = await fetch(`${import.meta.env.VITE_baseurl}/cancel-booking/${selectedBooking._id}`, {
+            method: 'DELETE',
+        });
+        const data = await res.json();
 
-    const handleCancel = () => {
-        fetch(`${import.meta.env.VITE_baseurl}/cancel-booking/${selectedBooking._id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    toast.success('Booking cancelled');
-                    fetchBookings();
-                } else {
-                    toast.error('Failed to cancel booking');
-                }
-                setShowModal(false);
-            });
+        if (data.success) {
+            toast.success('Booking cancelled successfully');
+            fetchBookings();
+        } else {
+            toast.error(data.message || 'Failed to cancel booking');
+        }
+        setShowModal(false);
+        setSelectedBooking(null);
     };
 
 
@@ -64,9 +58,7 @@ const MyBooking = () => {
                 if (data.success) {
                     toast.success('Booking date updated');
                     fetchBookings();
-                } else {
-                    toast.error('Failed to update booking');
-                }
+                } else toast.error('Failed to update booking');
                 setShowModal(false);
             });
     };
@@ -91,37 +83,24 @@ const MyBooking = () => {
             });
     };
 
-
     return (
         <>
-            <Helmet>
-                <title>Hotel Silk City | My Booking</title>
-            </Helmet>
-            <div className="min-h-screen lg:max-w-11/12 mx-auto p-4">
-                <h2 className="text-2xl font-bold mb-6 text-center">My Bookings</h2>
+            <Helmet><title>Hotel Silk City | My Booking</title></Helmet>
+            <div className="min-h-screen p-4 lg:max-w-6xl mx-auto">
+                <h2 className="text-2xl font-bold text-center mb-6">My Bookings</h2>
                 {bookings.length === 0 ? (
-                    <div className="text-center border py-4 rounded-lg bg-gray-100">
+                    <div className="text-center border py-4 rounded-lg">
                         <p className='mb-5'>You have no bookings yet.</p>
-                        <Link to='/allRooms' >
-                            <span className='text-blue-500 border rounded-xl p-2'>Browse Rooms</span>
-                        </Link>
+                        <Link to='/allRooms'><span className='text-blue-500 border rounded-xl p-2'>Browse Rooms</span></Link>
                     </div>
                 ) : (
                     <div className="overflow-x-auto">
                         <table className="table w-full">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Room Type</th>
-                                    <th>Booking Date</th>
-                                    <th>Price</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
+                            <thead><tr><th>Image</th><th>Room Type</th><th>Booking Date</th><th>Price</th><th>Actions</th></tr></thead>
                             <tbody>
                                 {bookings.map((booking, index) => (
                                     <tr key={index} className="hover">
-                                        <td><img src={booking?.image} alt='coming soon' className="w-16 h-16 object-cover rounded" /></td>
+                                        <td><img src={booking?.image} alt='img' className="w-16 h-16 object-cover rounded" /></td>
                                         <td>{booking.roomType}</td>
                                         <td>{new Date(booking.date).toDateString()}</td>
                                         <td>{booking.price} BDT</td>
@@ -147,7 +126,8 @@ const MyBooking = () => {
                         </table>
                     </div>
                 )}
-                {/* update date */}
+
+                {/* Modal */}
                 {showModal && (
                     <dialog className="modal modal-open">
                         <div className="bg-base-100 border border-orange-400 p-5 rounded-2xl lg:w-1/3">
@@ -156,9 +136,9 @@ const MyBooking = () => {
                             </h3>
                             {modalType === 'update' && (
                                 <DatePicker
-                                placeholderText='Select a new date'
+                                    placeholderText='Select a new date'
                                     selected={newDate}
-                                    onChange={(date) => setNewDate(date)}
+                                    onChange={setNewDate}
                                     minDate={new Date()}
                                     className="input input-bordered w-full"
                                 />
@@ -174,7 +154,8 @@ const MyBooking = () => {
                         </div>
                     </dialog>
                 )}
-                {/* rating modal */}
+
+                {/* Review Modal */}
                 {reviewModal && (
                     <dialog className="modal modal-open">
                         <div className="modal-box border border-orange-500">
@@ -185,13 +166,7 @@ const MyBooking = () => {
                                     const current = index + 1;
                                     return (
                                         <label key={index}>
-                                            <input
-                                                type="radio"
-                                                name="rating"
-                                                value={current}
-                                                onClick={() => setRating(current)}
-                                                className="hidden"
-                                            />
+                                            <input type="radio" name="rating" value={current} onClick={() => setRating(current)} className="hidden" />
                                             <FaStar
                                                 size={24}
                                                 className="cursor-pointer"
@@ -210,8 +185,8 @@ const MyBooking = () => {
                                 onChange={(e) => setReviewText(e.target.value)}
                             ></textarea>
                             <div className="modal-action">
-                                <button className="btn btn-outline text-orange-500 border border-orange-500" onClick={() => setReviewModal(false)}>Close</button>
-                                <button className="btn btn-primary" onClick={handleReviewSubmit}>Submit</button>
+                                <button className="btn btn-outline" onClick={() => setReviewModal(false)}>Close</button>
+                                <button className="btn btn-success" onClick={handleReviewSubmit}>Submit</button>
                             </div>
                         </div>
                     </dialog>

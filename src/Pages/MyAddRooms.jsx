@@ -3,21 +3,21 @@ import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Contexts/AuthContext';
 import { Link } from 'react-router';
+import { myAddRoomPromise } from '../Api/myAddRoomPromise';
 
 const MyAddRooms = () => {
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     console.log(user.email);
-    
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        if (!user?.email) return;
-        fetch(`${import.meta.env.VITE_baseurl}/rooms?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setRooms(data))
-            .catch(error => console.error('Error fetching added rooms:', error));
-    }, [user?.email]);
-
+        const fetchRooms = async () => {
+            if (!user?.email || !user?.accessToken) return;
+            const data = await myAddRoomPromise(user.email, user.accessToken);
+            setRooms(data);
+        };
+        fetchRooms();
+    }, [user?.email, user?.accessToken]);
 
 
     const handleDelete = (id) => {

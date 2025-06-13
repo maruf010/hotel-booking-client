@@ -12,11 +12,12 @@ import { HelmetProvider } from 'react-helmet-async';
 
 
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HelmetProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
       </AuthProvider>
       <Toaster position="top-center" reverseOrder={false} />
     </HelmetProvider>
