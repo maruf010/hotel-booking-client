@@ -7,9 +7,13 @@ import { FaStar } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { myBookingPromise } from '../Api/myBookingApi';
 import { Link } from 'react-router';
+import { MdTableRows } from "react-icons/md";
+import { FaTableCellsLarge } from "react-icons/fa6";
+import Loading from '../components/Loading';
+
 
 const MyBooking = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     console.log(user.photoURL);
 
     const [bookings, setBookings] = useState([]);
@@ -21,7 +25,8 @@ const MyBooking = () => {
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
-    const [viewMode, setViewMode] = useState('table'); // 'table' or 'card'
+    const [viewMode, setViewMode] = useState('table');
+
 
     const fetchBookings = async () => {
         const res = await myBookingPromise(user?.email, user?.accessToken);
@@ -68,6 +73,7 @@ const MyBooking = () => {
         const review = {
             roomId: selectedBooking.roomId,
             user: user.displayName,
+            userEmail: user.email,
             photo: user.photoURL,
             rating,
             comment: reviewText,
@@ -85,27 +91,40 @@ const MyBooking = () => {
             });
     };
 
+
+
+    if (loading) {
+        return (
+            <Loading></Loading>
+        );
+    }
+
     return (
         <>
             <Helmet><title>Hotel Silk City | My Booking</title></Helmet>
-            <div className="min-h-screen p-4 lg:max-w-6xl mx-auto">
-                <h2 className="text-2xl font-bold text-center mb-6">My Bookings</h2>
-
+            <div className="min-h-screen mx-2 lg:max-w-11/12 lg:mx-auto">
                 {/* Toggle Buttons */}
-                <div className="flex justify-center gap-4 mb-6">
-                    <button
-                        className={`px-4 py-2 rounded-lg border ${viewMode === 'table' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-                        onClick={() => setViewMode('table')}
-                    >
-                        Table View
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded-lg border ${viewMode === 'card' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-                        onClick={() => setViewMode('card')}
-                    >
-                        Card View
-                    </button>
+                <div className="flex items-center justify-between my-5">
+                    <div className='flex'>
+                        <h2 className="text-2xl font-bold text-orange-500">My Bookings</h2>
+                    </div>
+                    <div className='flex items-center gap-2'>
+                        <h2 className='bg-orange-500 text-white p-2 px-3 rounded-r-full '>View Mode</h2>
+                        <button
+                            className={`p-2 rounded-lg cursor-pointer ${viewMode === 'table' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+                            onClick={() => setViewMode('table')}
+                        >
+                            <MdTableRows size={20} />
+                        </button>
+                        <button
+                            className={`p-2 rounded-lg cursor-pointer ${viewMode === 'card' ? 'bg-orange-500 text-white' : 'bg-gray-200 text-black'}`}
+                            onClick={() => setViewMode('card')}
+                        >
+                            <FaTableCellsLarge size={20} />
+                        </button>
+                    </div>
                 </div>
+
 
                 {bookings.length === 0 ? (
                     <div className="text-center border py-4 rounded-lg">
@@ -126,12 +145,12 @@ const MyBooking = () => {
                             </thead>
                             <tbody>
                                 {bookings.map((booking, index) => (
-                                    <tr key={index} className="hover">
+                                    <tr key={index} className="hover items-center">
                                         <td><img src={booking?.image} alt='img' className="w-16 h-16 md:w-20 md:h-20 object-cover rounded" /></td>
                                         <td className='md:text-xl'>{booking.roomType}</td>
                                         <td className='md:text-xl'>{new Date(booking.date).toDateString()}</td>
                                         <td className='md:text-xl'>{booking.price} BDT</td>
-                                        <td className="flex gap-2 flex-wrap">
+                                        <td className="flex gap-2 flex-wrap lg:mt-5">
                                             <button className="btn btn-warning btn-sm" onClick={() => {
                                                 setSelectedBooking(booking);
                                                 setModalType('update');

@@ -36,7 +36,6 @@ const VisitModal = () => {
                         >
                             &times;
                         </button>
-                        {/* Example video (replace with your own) */}
                         <img
                             src={ad}
                             alt="Welcome"

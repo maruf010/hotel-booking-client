@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import RoomsCard from '../components/RoomsCard';
 import { Helmet } from 'react-helmet-async';
+import { AuthContext } from '../Contexts/AuthContext';
+import Loading from '../components/Loading';
 
 const priceRanges = [
     { label: 'All Prices', min: null, max: null },
@@ -11,6 +13,8 @@ const priceRanges = [
 ];
 
 const AllRooms = () => {
+
+    const {loading} = useContext(AuthContext);
     const [rooms, setRooms] = useState([]);
     const [selectedRange, setSelectedRange] = useState(priceRanges[0]);
 
@@ -34,6 +38,12 @@ const AllRooms = () => {
 
         fetchRooms();
     }, [selectedRange]);
+
+    if (loading) {
+        return (
+            <Loading></Loading>
+        );
+    }
 
     return (
         <>
@@ -69,7 +79,7 @@ const AllRooms = () => {
                             <RoomsCard key={room._id} room={room} />
                         ))
                     ) : (
-                        <p className="text-center col-span-full text-xl mt-10">No rooms found in this price range.</p>
+                        <p className="text-center col-span-full text-2xl mt-10">No rooms found in this price range.</p>
                     )}
                 </div>
             </div>

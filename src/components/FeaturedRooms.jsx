@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../Contexts/AuthContext';
+import Loading from './Loading';
 
 const FeaturedRooms = () => {
+    const { loading } = useContext(AuthContext)
     const [rooms, setRooms] = useState([]);
     const navigate = useNavigate();
 
@@ -24,6 +27,12 @@ const FeaturedRooms = () => {
             });
     }, []);
 
+    if (loading) {
+        return (
+            <Loading></Loading>
+        );
+    }
+
     return (
         <section className="lg:max-w-11/12 lg:mx-auto mx-3 min-h-screen py-8">
             <h2 className="text-3xl font-bold mb-6 text-center">🌟 Featured Rooms</h2>
@@ -37,15 +46,15 @@ const FeaturedRooms = () => {
                         />
                         <h3 className="text-xl font-semibold mb-2 text-orange-500">Room Type : {room.roomType}</h3>
                         <div className="text-gray-600 text-sm mb-2">
-                            <strong>Features:</strong> 
+                            <strong>Features:</strong>
                             {
-                            room?.features.slice(0, 3).map((feature, index) => (
-                                <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
-                            ))
+                                room?.features.slice(0, 3).map((feature, index) => (
+                                    <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
+                                ))
                             }
                         </div>
                         <div className="text-gray-600 text-sm mb-2">
-                            <strong>Facilities:</strong> 
+                            <strong>Facilities:</strong>
                             {
                                 room?.facilities.slice(0, 3).map((facility, index) => (
                                     <span key={index} className="text-blue-500 badge badge-outline m-1">{facility}</span>
