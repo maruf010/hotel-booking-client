@@ -190,12 +190,12 @@ const AddRooms = () => {
                 <title>Hotel Silk City | Add Room</title>
             </Helmet>
             <div className="mx-3 lg:w-11/12 lg:mx-auto min-h-screen">
-                <h1 className="text-3xl text-center my-5 font-bold">Add Room now!</h1>
+                <h1 className="text-3xl text-center my-5 font-bold text-orange-500">Add Room now!</h1>
                 <form onSubmit={handleAddRoom}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <fieldset className="fieldset bg-base-200 border p-4 rounded-box">
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
                             <label className="label">Select Room Type</label>
-                            <select name="roomType" className="input w-full" required>
+                            <select name="roomType" className="focus:outline-none input w-full" required>
                                 <option value="Deluxe Double Room">Deluxe Double Room</option>
                                 <option value="Standard Single Room">Standard Single Room</option>
                                 <option value="Family Suite">Family Suite</option>
@@ -203,21 +203,25 @@ const AddRooms = () => {
                                 <option value="Executive Suite">Executive Suite</option>
                             </select>
                         </fieldset>
-                        <fieldset className="fieldset bg-base-200 border p-4 rounded-box">
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
                             <label className="label">Room Photo URL</label>
-                            <input name="image" type="text" className="input w-full" placeholder="Photo URL" required />
+                            <input name="image" type="text" className="focus:outline-none input w-full" placeholder="Photo URL" required />
                         </fieldset>
-                        <fieldset className="fieldset bg-base-200 border p-4 rounded-box">
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
                             <label className="label">Room Features (comma separated)</label>
-                            <input name="features" type="text" className="input w-full" placeholder="e.g., AC, TV, WiFi" required />
+                            <input name="features" type="text" className="focus:outline-none input w-full" placeholder="e.g., AC, TV, WiFi" required />
                         </fieldset>
-                        <fieldset className="fieldset bg-base-200 border p-4 rounded-box">
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
                             <label className="label">Hotel Facilities (comma separated)</label>
-                            <input name="facilities" type="text" className="input w-full" placeholder="e.g., Pool, Gym, Spa" required />
+                            <input name="facilities" type="text" className="focus:outline-none input w-full" placeholder="e.g., Pool, Gym, Spa" required />
                         </fieldset>
-                        <fieldset className="fieldset bg-base-200 border p-4 rounded-box">
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
                             <label className="label">Price per Night</label>
-                            <input name="price" type="number" className="input w-full" placeholder="Enter price" required />
+                            <input name="price" type="number" className="focus:outline-none input w-full" placeholder="Enter price" required />
+                        </fieldset>
+                        <fieldset className="fieldset bg-base-200 border border-orange-500 p-4 rounded-box">
+                            <label className="label">Description</label>
+                            <input name="description" type="text" className="focus:outline-none input w-full" placeholder="Enter Room Description" required />
                         </fieldset>
                     </div>
                     <input type="submit" value="Add Room" className="btn bg-orange-500 text-white mt-4 w-full" />

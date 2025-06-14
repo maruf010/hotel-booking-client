@@ -42,7 +42,7 @@ const RoomsCard = ({ room }) => {
                     </div>
 
                     <div>
-                        <button className="btn btn-primary">Show More</button>
+                        <button className="btn bg-orange-500 text-white border-none hover:bg-orange-600">Show More</button>
                     </div>
                 </div>
             </Link>

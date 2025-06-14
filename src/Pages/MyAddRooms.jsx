@@ -52,7 +52,7 @@ const MyAddRooms = () => {
                 <title>Hotel Silk City | My Added Rooms</title>
             </Helmet>
             <div className='min-h-screen mx-3 lg:w-11/12 lg:mx-auto space-y-6 my-5'>
-                <h2 className="text-2xl font-bold mb-4 text-center">My Added Rooms</h2>
+                <h2 className="text-2xl font-bold mb-4 text-center text-orange-500">My Added Rooms</h2>
                 {rooms?.length === 0 && (
                     <div className="text-center my-5">
                         <p className="mb-3 text-gray-600">You haven't added any rooms yet.</p>

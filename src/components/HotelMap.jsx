@@ -10,7 +10,7 @@ const markerIcon = new L.Icon({
 
 const HotelMap = ({ lat, lng, hotelName }) => {
   return (
-    <div style={{ height: '300px', width: '100%' }}>
+    <div style={{ height: '250px', width: '100%' }}>
       <MapContainer center={[lat, lng]} zoom={13} scrollWheelZoom={false} style={{borderRadius:'12px', height: '100%', width: '100%' }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

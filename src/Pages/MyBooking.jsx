@@ -3,11 +3,11 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Contexts/AuthContext';
-import { FaStar } from 'react-icons/fa';
+import { FaCommentDots, FaRegEdit, FaStar } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { myBookingPromise } from '../Api/myBookingApi';
 import { Link } from 'react-router';
-import { MdTableRows } from "react-icons/md";
+import { MdCancel, MdTableRows } from "react-icons/md";
 import { FaTableCellsLarge } from "react-icons/fa6";
 import Loading from '../components/Loading';
 
@@ -179,21 +179,21 @@ const MyBooking = () => {
                                 <h3 className="text-xl font-semibold mb-2">{booking.roomType}</h3>
                                 <p><strong>Date:</strong> {new Date(booking.date).toDateString()}</p>
                                 <p><strong>Price:</strong> {booking.price} BDT</p>
-                                <div className="mt-3 flex gap-2 flex-wrap">
+                                <div className="mt-3 flex gap-3 justify-end flex-wrap">
                                     <button className="btn btn-warning btn-sm" onClick={() => {
                                         setSelectedBooking(booking);
                                         setModalType('update');
                                         setShowModal(true);
-                                    }}>Update</button>
+                                    }}><FaRegEdit size={20} /></button>
                                     <button className="btn btn-error btn-sm" onClick={() => {
                                         setSelectedBooking(booking);
                                         setModalType('cancel');
                                         setShowModal(true);
-                                    }}>Cancel</button>
+                                    }}><MdCancel size={20} /></button>
                                     <button className="btn btn-info btn-sm" onClick={() => {
                                         setSelectedBooking(booking);
                                         setReviewModal(true);
-                                    }}>Review</button>
+                                    }}><FaCommentDots size={20}/></button>
                                 </div>
                             </div>
                         ))}

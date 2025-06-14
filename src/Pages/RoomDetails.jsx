@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 import Loading from '../components/Loading';
 
 const RoomDetails = () => {
-    const { image, roomType, _id, price, features, facilities } = useLoaderData();
+    const { image,description, roomType, _id, price, features, facilities } = useLoaderData();
     const [reviews, setReviews] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -224,6 +224,7 @@ const RoomDetails = () => {
                                 <span key={index} className="badge badge-outline mx-1">{facility}</span>
                             ))}
                         </div>
+                        <p><strong className='text-gray-600'>Description : </strong> {description}</p>
                         <p className='text-2xl'><span className='text-blue-500'>{price}</span> BDT per/night</p>
                         <div>
                             <button

@@ -4,7 +4,7 @@ import logo from '../assets/logo.jpg';
 
 const Footer = () => {
     return (
-        <footer className=" divide-y max-w-11/12 mx-auto">
+        <footer className=" divide-y max-w-11/12 mx-auto mt-10">
             <div className="grid grid-cols-1 md:grid-cols-5 gap-5 py-5">
                 <div >
                     <span className="self-center text-2xl lg:text-3xl text-orange-500 font-medium"> <img src={logo} alt="Hotel Silk City" className="inline-block w-16 h-16" /> Hotel_Silk_City</span>

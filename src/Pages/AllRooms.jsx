@@ -52,12 +52,12 @@ const AllRooms = () => {
             </Helmet>
 
             <div className="min-h-screen lg:max-w-11/12 lg:mx-auto">
-                <h2 className="text-center text-3xl font-medium my-5">All Rooms</h2>
+                <h2 className="text-center text-3xl font-medium my-5 text-orange-500">All Rooms</h2>
 
                 {/* Price Filter Dropdown */}
                 <div className="flex justify-center mb-6">
                     <select
-                        className="select select-bordered w-48"
+                        className="select select-bordered w-48 focus:outline-none"
                         value={selectedRange.label}
                         onChange={(e) => {
                             const range = priceRanges.find(pr => pr.label === e.target.value);
