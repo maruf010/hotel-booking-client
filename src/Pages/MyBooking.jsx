@@ -10,6 +10,8 @@ import { Link } from 'react-router';
 
 const MyBooking = () => {
     const { user } = useContext(AuthContext);
+    console.log(user.photoURL);
+
     const [bookings, setBookings] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalType, setModalType] = useState('');
@@ -66,6 +68,7 @@ const MyBooking = () => {
         const review = {
             roomId: selectedBooking.roomId,
             user: user.displayName,
+            photo: user.photoURL,
             rating,
             comment: reviewText,
             timestamp: new Date()
