@@ -6,6 +6,7 @@ import { AuthContext } from '../Contexts/AuthContext';
 import toast from 'react-hot-toast';
 import { FaStar } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
+import Loading from '../components/Loading';
 
 const RoomDetails = () => {
     const { image, roomType, _id, price, features, facilities } = useLoaderData();
@@ -41,9 +42,7 @@ const RoomDetails = () => {
 
     if (loading) {
         return (
-            <div className="flex justify-center items-center min-h-screen">
-                <span className="loading loading-spinner text-primary text-5xl"></span>
-            </div>
+            <Loading></Loading>
         );
     }
 
@@ -92,7 +91,7 @@ const RoomDetails = () => {
                 <title>Hotel Silk City | Room Details</title>
             </Helmet>
             <div className='min-h-screen mx-3 space-y-6 my-5 lg:max-w-11/12 lg:mx-auto'>
-                <div className="flex flex-col md:flex-row shadow-xl">
+                <div className="flex flex-col md:flex-row shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]">
                     <div className='flex-1'>
                         <img src={image} className="w-full h-96" alt="Room" />
                     </div>

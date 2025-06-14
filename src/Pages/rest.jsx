@@ -19,7 +19,6 @@ const MyBooking = () => {
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(0);
     const [hover, setHover] = useState(null);
-    const [viewMode, setViewMode] = useState('table'); // 'table' or 'card'
 
     const fetchBookings = async () => {
         const res = await myBookingPromise(user?.email, user?.accessToken);
@@ -29,6 +28,7 @@ const MyBooking = () => {
     useEffect(() => {
         if (user?.email && user?.accessToken) fetchBookings();
     }, [user?.email, user?.accessToken]);
+
 
     const handleCancel = async () => {
         const res = await fetch(`${import.meta.env.VITE_baseurl}/cancel-booking/${selectedBooking._id}`, {
@@ -45,6 +45,7 @@ const MyBooking = () => {
         setShowModal(false);
         setSelectedBooking(null);
     };
+
 
     const handleUpdate = () => {
         fetch(`${import.meta.env.VITE_baseurl}/update-booking/${selectedBooking._id}`, {
@@ -87,29 +88,12 @@ const MyBooking = () => {
             <Helmet><title>Hotel Silk City | My Booking</title></Helmet>
             <div className="min-h-screen p-4 lg:max-w-6xl mx-auto">
                 <h2 className="text-2xl font-bold text-center mb-6">My Bookings</h2>
-
-                {/* Toggle Buttons */}
-                <div className="flex justify-center gap-4 mb-6">
-                    <button
-                        className={`px-4 py-2 rounded-lg border ${viewMode === 'table' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-                        onClick={() => setViewMode('table')}
-                    >
-                        Table View
-                    </button>
-                    <button
-                        className={`px-4 py-2 rounded-lg border ${viewMode === 'card' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
-                        onClick={() => setViewMode('card')}
-                    >
-                        Card View
-                    </button>
-                </div>
-
                 {bookings.length === 0 ? (
                     <div className="text-center border py-4 rounded-lg">
                         <p className='mb-5'>You have no bookings yet.</p>
                         <Link to='/allRooms'><span className='text-blue-500 border rounded-xl p-2'>Browse Rooms</span></Link>
                     </div>
-                ) : viewMode === 'table' ? (
+                ) : (
                     <div className="overflow-x-auto">
                         <table className="table w-full">
                             <thead>
@@ -128,18 +112,18 @@ const MyBooking = () => {
                                         <td className='md:text-xl'>{booking.roomType}</td>
                                         <td className='md:text-xl'>{new Date(booking.date).toDateString()}</td>
                                         <td className='md:text-xl'>{booking.price} BDT</td>
-                                        <td className="flex gap-2 flex-wrap">
-                                            <button className="btn btn-warning btn-sm" onClick={() => {
+                                        <td className="flex gap-2">
+                                            <button className="btn btn-warning btn-sm lg:btn-md" onClick={() => {
                                                 setSelectedBooking(booking);
                                                 setModalType('update');
                                                 setShowModal(true);
-                                            }}>Update</button>
-                                            <button className="btn btn-error btn-sm" onClick={() => {
+                                            }}>Update Date</button>
+                                            <button className="btn btn-error btn-sm lg:btn-md" onClick={() => {
                                                 setSelectedBooking(booking);
                                                 setModalType('cancel');
                                                 setShowModal(true);
                                             }}>Cancel</button>
-                                            <button className="btn btn-info btn-sm" onClick={() => {
+                                            <button className="btn btn-info btn-sm lg:btn-md" onClick={() => {
                                                 setSelectedBooking(booking);
                                                 setReviewModal(true);
                                             }}>Review</button>
@@ -149,36 +133,9 @@ const MyBooking = () => {
                             </tbody>
                         </table>
                     </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {bookings.map((booking, index) => (
-                            <div key={index} className="border rounded-lg p-4 shadow-md">
-                                <img src={booking?.image} alt="Room" className="w-full h-48 object-cover rounded mb-4" />
-                                <h3 className="text-xl font-semibold mb-2">{booking.roomType}</h3>
-                                <p><strong>Date:</strong> {new Date(booking.date).toDateString()}</p>
-                                <p><strong>Price:</strong> {booking.price} BDT</p>
-                                <div className="mt-3 flex gap-2 flex-wrap">
-                                    <button className="btn btn-warning btn-sm" onClick={() => {
-                                        setSelectedBooking(booking);
-                                        setModalType('update');
-                                        setShowModal(true);
-                                    }}>Update</button>
-                                    <button className="btn btn-error btn-sm" onClick={() => {
-                                        setSelectedBooking(booking);
-                                        setModalType('cancel');
-                                        setShowModal(true);
-                                    }}>Cancel</button>
-                                    <button className="btn btn-info btn-sm" onClick={() => {
-                                        setSelectedBooking(booking);
-                                        setReviewModal(true);
-                                    }}>Review</button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
                 )}
 
-                {/* Modal delete */}
+                {/* Modal */}
                 {showModal && (
                     <dialog className="modal modal-open">
                         <div className="bg-base-100 border border-orange-400 p-5 rounded-2xl lg:w-1/3">

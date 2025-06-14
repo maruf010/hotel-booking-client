@@ -48,13 +48,13 @@ const Login = () => {
     }
     return (
         <>
-        <Helmet>
-            <title>Hotel Silk City | Login</title>
-        </Helmet>
+            <Helmet>
+                <title>Hotel Silk City | Login</title>
+            </Helmet>
             <div className='flex justify-center items-center min-h-screen font-three md:mx-auto mx-3 '>
-                <div className='md:mx-auto card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_15px_0px_rgba(255,85,85,0.5),0px_0px_30px_0px_rgba(0,0,255,0.5)]'>
+                <div className='md:mx-auto card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                     <div className='card-body'>
-                        <h1 className='text-3xl font-bold text-center mb-2'>
+                        <h1 className='text-3xl text-orange-500 font-bold text-center mb-2'>
                             Login your Account!
                         </h1>
                         <form onSubmit={handleLogin} className='fieldset'>
@@ -101,7 +101,7 @@ const Login = () => {
 
                             <button
                                 type='submit'
-                                className='btn text-white font-bold mt-4 bg-fuchsia-500'
+                                className='btn text-white font-bold mt-4 bg-orange-500'
                             >
                                 Login
                             </button>

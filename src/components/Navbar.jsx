@@ -16,10 +16,10 @@ const Navbar = () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
 
-                className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500  ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>Home</NavLink>
-            <NavLink to='/allRooms' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>All Rooms</NavLink>
-            <NavLink to='/addRooms' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>Add Room</NavLink>
-            <NavLink to='/myBooking' className={({ isActive }) => (isActive ? 'text-red-500 lg:border-b lg:border-b-red-500 ' : 'hover:text-green-500 transition-colors delay-100 duration-200')}>My Booking</NavLink>
+                className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500  ' : 'hover:text-green-500  text-blue-500 transition-colors delay-100 duration-200')}>Home</NavLink>
+            <NavLink to='/allRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>All Rooms</NavLink>
+            <NavLink to='/addRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>Add Room</NavLink>
+            <NavLink to='/myBooking' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>My Booking</NavLink>
         </div>
     )
     const handleLogout = () => {
@@ -55,12 +55,14 @@ const Navbar = () => {
         setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
     };
 
+
+
     return (
-        <div className="navbar shadow bg-white/30 backdrop-blur-sm px-3 lg:px-20 ">
+        <div className=" navbar shadow px-5 md:px-7 lg:py-3 lg:px-20 p-0 font-one bg-white/30 backdrop-blur-sm">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    <div tabIndex={0} role="button" className="mr-2 lg:hidden cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 20 20" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                     </div>
                     <ul
                         tabIndex={0}
@@ -69,7 +71,7 @@ const Navbar = () => {
                         {user ? (
                             <button
                                 onClick={handleLogout}
-                                className='ml-2 pb-2 text-[16px] text-start cursor-pointer mt-1'
+                                className='text-blue-500 ml-2 pb-2 text-[16px] text-start cursor-pointer mt-1'
                             >
                                 Logout
                             </button>
@@ -98,7 +100,7 @@ const Navbar = () => {
                 <Link to='/'>
                     <div className='flex-1 flex items-center'>
                         <img src={logo} alt="Coming soon" className=" w-14 h-14  hidden md:flex" />
-                        <span className='text-orange-500 font-medium ml-1 text-lg lg:text-2xl'>Hotel Silk City</span>
+                        <span className='text-blue-500 font-medium ml-1 text-lg lg:text-2xl'>HOTEL<span className='text-orange-500'>SilkCity</span></span>
                     </div>
                 </Link>
             </div>
@@ -116,7 +118,7 @@ const Navbar = () => {
                         {/* this hidden checkbox controls the state */}
                         <button type="checkbox m-0"
                             onClick={toggleTheme}
-                            className="theme-controller text-red-500"
+                            className="theme-controller text-green-500"
                         />
                         {theme === 'light' ?
                             <svg
@@ -140,7 +142,7 @@ const Navbar = () => {
                 {/* user rounded animated*/}
                 <span className="relative flex">
                     <span
-                        className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-fuchsia-400 opacity-100 ml-1 mt-1">
+                        className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-orange-400 opacity-100 ml-1 mt-1">
                     </span>
                     {/* user profile */}
                     <div className='dropdown dropdown-end duration-600 relative'>
@@ -150,12 +152,12 @@ const Navbar = () => {
                             role='button'
                             className='btn btn-ghost btn-circle avatar relative group'
                         >
-                            <div className='w-10 rounded-full border border-fuchsia-500'>
+                            <div className='w-10 rounded-full border border-orange-500'>
 
                                 <img alt='coming' src={user ? user.photoURL : "https://i.ibb.co.com/84TKBCHZ/user-icon-1024x1024-dtzturco.png"} />
 
                                 {/* hover profile name */}
-                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-fuchsia-700 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15'>
+                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-orange-500 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15'>
                                     {user ? user.displayName : 'Please Login'}
                                 </div>
                             </div>
@@ -205,7 +207,7 @@ const Navbar = () => {
                         {/* this hidden checkbox controls the state */}
                         <button type="checkbox m-0"
                             onClick={toggleTheme}
-                            className="theme-controller text-red-500"
+                            className="theme-controller text-green-500"
                         />
                         {theme === 'light' ?
                             <svg
@@ -229,7 +231,7 @@ const Navbar = () => {
                 {/* user rounded animated*/}
                 <span className="relative flex">
                     <span
-                        className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-fuchsia-400 opacity-100 ml-1 mt-1">
+                        className="animate-ping absolute inline-flex h-8 w-8 rounded-full bg-orange-300 opacity-100 ml-1 mt-1">
                     </span>
                     {/* user profile */}
                     <div className='dropdown dropdown-end duration-600 relative'>
@@ -239,38 +241,38 @@ const Navbar = () => {
                             role='button'
                             className='btn btn-ghost btn-circle avatar relative group'
                         >
-                            <div className='w-10 rounded-full border border-fuchsia-500'>
+                            <div className='w-10 rounded-full border border-orange-400'>
 
                                 <img alt='coming' src={user ? user.photoURL : "https://i.ibb.co.com/84TKBCHZ/user-icon-1024x1024-dtzturco.png"} />
 
                                 {/* hover profile name */}
-                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-fuchsia-700 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15'>
+                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-orange-500 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15'>
                                     {user ? user.displayName : 'Please Login'}
                                 </div>
                             </div>
                         </div>
                         <ul
                             tabIndex={0}
-                            className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow border'
+                            className='menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow border border-orange-500'
                         >
                             <div>
                                 {user ? (
                                     <div>
                                         <Link to='/profile' className='text-lg'>
-                                            <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
+                                            <div className=' px-2 font-medium py-2 rounded-lg text-orange-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                 Profile
                                             </div>
                                         </Link>
                                         <div>
                                             <Link to='/myAddRooms' className='text-lg'>
-                                                <div className=' px-2 font-bold py-2 rounded-lg text-fuchsia-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
+                                                <div className=' px-2 font-medium py-2 rounded-lg text-orange-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                     My Added Rooms
                                                 </div>
                                             </Link>
                                         </div>
                                         <button
                                             onClick={handleLogout}
-                                            className='text-lg  px-2 font-bold py-2 rounded-lg text-fuchsia-500   hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'
+                                            className='text-lg  px-2 font-medium py-2 rounded-lg text-orange-500   hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'
                                         >
                                             Logout
                                         </button>
@@ -297,8 +299,8 @@ const Navbar = () => {
                             <div>
                                 <Link
                                     to='/login'
-                                    className='bg-fuchsia-500 px-4 py-2 rounded-lg hover:text-fuchsia-500 ml-4 
-                                    border-2 border-fuchsia-500 transition-colors delay-100 duration-200 hover:border-2 hover:bg-white cursor-pointer   text-white'
+                                    className='bg-orange-600 px-4 py-2 rounded-lg hover:text-orange-500 ml-4 
+                                    border-2 border-orange-500 transition-colors delay-100 duration-200 hover:border-2 hover:bg-white cursor-pointer text-white'
                                 >
                                     Login
                                 </Link>
@@ -306,7 +308,8 @@ const Navbar = () => {
                             <div>
                                 <Link
                                     to='/register'
-                                    className='bg-white px-4 py-2 rounded-lg text-fuchsia-500 ml-4 border-2 hover:bg-fuchsia-500  cursor-pointer   transition-colors delay-100 duration-200 hover:text-white'
+                                    className='bg-white px-4 py-2 rounded-lg text-orange-500 ml-4 border-2 hover:bg-orange-600  cursor-pointer   transition-colors delay-100 duration-200 hover:text-white
+                                    '
                                 >
                                     Register
                                 </Link>

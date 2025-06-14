@@ -8,7 +8,7 @@ const Loading = () => {
                 <PulseLoader
                     margin={2}
                     size={30}
-                    color="#D946EF"
+                    color="#FFA500"
                 />
             </div>
         </div>

@@ -71,9 +71,9 @@ const Register = () => {
                 <title>Hotel Silk City | Register</title>
             </Helmet>
             <div className='min-h-screen justify-center flex items-center font-three md:mx-auto mx-3 card'>
-                <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-[0px_0px_15px_0px_rgba(255,85,85,0.5),0px_0px_30px_0px_rgba(0,0,255,0.5)]'>
+                <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                     <div className='card-body'>
-                        <h1 className='text-3xl font-bold text-center mb-2'>
+                        <h1 className='text-3xl font-bold text-center mb-2 text-orange-500'>
                             Register now!
                         </h1>
                         <form onSubmit={handleRegister} className='fieldset'>
@@ -127,7 +127,7 @@ const Register = () => {
                                 </div>
                             </div>
 
-                            <button type='submit' className='btn btn-neutral mt-4'>
+                            <button type='submit' className='btn text-white bg-orange-500 mt-4'>
                                 Register
                             </button>
 
