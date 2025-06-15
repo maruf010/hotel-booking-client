@@ -146,7 +146,8 @@ const MyBooking = () => {
                             <tbody>
                                 {bookings.map((booking, index) => (
                                     <tr key={index} className="hover items-center">
-                                        <td><img src={booking?.image} alt='img' className="w-16 h-16 md:w-20 md:h-20 object-cover rounded" /></td>
+                                        <td>
+                                            <img src={booking?.image} alt='img' className="w-16 h-16 md:w-20 md:h-20 object-cover rounded" /></td>
                                         <td className='md:text-xl'>{booking.roomType}</td>
                                         <td className='md:text-xl'>{new Date(booking.date).toDateString()}</td>
                                         <td className='md:text-xl'>{booking.price} BDT</td>
@@ -193,7 +194,7 @@ const MyBooking = () => {
                                     <button className="btn btn-info btn-sm" onClick={() => {
                                         setSelectedBooking(booking);
                                         setReviewModal(true);
-                                    }}><FaCommentDots size={20}/></button>
+                                    }}><FaCommentDots size={20} /></button>
                                 </div>
                             </div>
                         ))}

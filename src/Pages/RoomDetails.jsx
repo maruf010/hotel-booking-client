@@ -8,8 +8,9 @@ import { FaStar, FaEdit, FaTrash } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import Loading from '../components/Loading';
 
+
 const RoomDetails = () => {
-    const { image,description, roomType, _id, price, features, facilities } = useLoaderData();
+    const { image, description, roomType, _id, price, features, facilities } = useLoaderData();
     const [reviews, setReviews] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
@@ -27,12 +28,13 @@ const RoomDetails = () => {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [reviewToDelete, setReviewToDelete] = useState(null);
 
+
     // Fetch room reviews
     const fetchReviews = async () => {
         try {
             const res = await fetch(`${import.meta.env.VITE_baseurl}/reviews?roomId=${_id}`);
             const data = await res.json();
-            setReviews(data.reviews || data); // Handle both response formats
+            setReviews(data.reviews || data);
         } catch (err) {
             console.error('Error fetching reviews:', err);
             toast.error('Failed to load reviews');
@@ -155,7 +157,7 @@ const RoomDetails = () => {
         }
     };
 
-    // Open delete confirmation modal
+    // Open delete modal
     const confirmDeleteReview = (reviewId) => {
         setReviewToDelete(reviewId);
         setShowDeleteModal(true);
@@ -258,7 +260,7 @@ const RoomDetails = () => {
                                     {editingReview?._id === review._id ? (
                                         <div className="space-y-4">
                                             <textarea
-                                                className="textarea textarea-bordered w-full"
+                                                className="textarea textarea-bordered focus:border-green-500 focus:outline-none w-full"
                                                 value={editComment}
                                                 onChange={(e) => setEditComment(e.target.value)}
                                                 placeholder="Write your review..."
@@ -323,14 +325,14 @@ const RoomDetails = () => {
                                                                     className="text-blue-500 hover:text-blue-700"
                                                                     title="Edit review"
                                                                 >
-                                                                    <FaEdit size={30}/>
+                                                                    <FaEdit size={30} />
                                                                 </button>
                                                                 <button
                                                                     onClick={() => confirmDeleteReview(review._id)}
                                                                     className="text-red-500 hover:text-red-700"
                                                                     title="Delete review"
                                                                 >
-                                                                    <FaTrash size={25}/>
+                                                                    <FaTrash size={25} />
                                                                 </button>
                                                             </div>
                                                         )}
@@ -405,7 +407,7 @@ const RoomDetails = () => {
                 {/* Delete Confirmation Modal */}
                 {showDeleteModal && (
                     <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50">
-                        <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+                        <div className="bg-white border border-orange-500 rounded-lg p-6 max-w-md w-full mx-4">
                             <h2 className="text-2xl font-semibold mb-4 text-red-600">Confirm Deletion</h2>
                             <p className="mb-6 text-gray-700">Are you sure you want to delete this review?</p>
                             <div className="flex justify-end space-x-3">

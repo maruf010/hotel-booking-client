@@ -14,7 +14,7 @@ const priceRanges = [
 
 const AllRooms = () => {
 
-    const {loading} = useContext(AuthContext);
+    const { loading } = useContext(AuthContext);
     const [rooms, setRooms] = useState([]);
     const [selectedRange, setSelectedRange] = useState(priceRanges[0]);
 
