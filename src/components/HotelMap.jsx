@@ -10,17 +10,41 @@ const markerIcon = new L.Icon({
 
 const HotelMap = ({ lat, lng, hotelName }) => {
   return (
-    <div style={{ height: '250px', width: '100%' }}>
-      <MapContainer center={[lat, lng]} zoom={13} scrollWheelZoom={false} style={{borderRadius:'12px', height: '100%', width: '100%' }}>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        />
-        <Marker position={[lat, lng]} icon={markerIcon}>
-          <Popup>{hotelName}</Popup>
-        </Marker>
-      </MapContainer>
-    </div>
+    <>
+      <div className='md:hidden' style={{ height: '250px', width: '100%' }}>
+        <MapContainer center={[lat, lng]} zoom={13} scrollWheelZoom={false} style={{ borderRadius: '12px', height: '100%', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          />
+          <Marker position={[lat, lng]} icon={markerIcon}>
+            <Popup>{hotelName}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+      <div className='hidden md:flex lg:hidden' style={{ height: '350px', width: '500px' }}>
+        <MapContainer center={[lat, lng]} zoom={12} scrollWheelZoom={false} style={{ borderRadius: '12px', height: '100%', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          />
+          <Marker position={[lat, lng]} icon={markerIcon}>
+            <Popup>{hotelName}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+      <div className='hidden lg:flex' style={{ height: '350px', width: '700px' }}>
+        <MapContainer center={[lat, lng]} zoom={12} scrollWheelZoom={false} style={{ borderRadius: '16px', height: '100%', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          />
+          <Marker position={[lat, lng]} icon={markerIcon}>
+            <Popup>{hotelName}</Popup>
+          </Marker>
+        </MapContainer>
+      </div>
+    </>
   );
 };
 

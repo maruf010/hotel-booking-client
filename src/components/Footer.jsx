@@ -5,7 +5,7 @@ import logo from '../assets/logo.jpg';
 const Footer = () => {
     return (
         <footer className=" divide-y max-w-11/12 mx-auto mt-10">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-5 py-5">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-5 py-5">
                 <div >
                     <span className="self-center text-2xl lg:text-3xl text-orange-500 font-medium"> <img src={logo} alt="Hotel Silk City" className="inline-block w-16 h-16" /> Hotel_Silk_City</span>
                 </div>
@@ -21,9 +21,7 @@ const Footer = () => {
                         <li>
                             <a rel="noopener noreferrer" href="#">Pricing</a>
                         </li>
-                        <li>
-                            <a rel="noopener noreferrer" href="#">FAQ</a>
-                        </li>
+
                     </ul>
                 </div>
                 <div className="">
@@ -34,6 +32,9 @@ const Footer = () => {
                         </li>
                         <li>
                             <a rel="noopener noreferrer" href="#">Terms of Service</a>
+                        </li>
+                        <li>
+                            <a rel="noopener noreferrer" href="#">FAQ</a>
                         </li>
                     </ul>
                 </div>
@@ -56,9 +57,6 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                </div>
-                <div className='w-full '>
-                    <HotelDetails></HotelDetails>
                 </div>
             </div>
             <div className="py-6 text-sm text-center dark:text-gray-600">© 1968 Company Co. All rights reserved.</div>

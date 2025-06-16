@@ -38,11 +38,11 @@ const FeaturedRooms = () => {
             <h2 className="text-3xl font-bold mb-6 text-center">🌟 Featured Rooms</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => (
-                    <div key={room._id} className=" bg-base-200 hover:border  hover:border-orange-300 hover:bg-orange-100 transition rounded-xl shadow p-4">
+                    <div key={room._id} className="transform transition-transform duration-500 hover:scale-107 bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4">
                         <img
                             src={room.image}
                             alt="soon"
-                            className="w-full h-64 object-cover rounded-md mb-4"
+                            className="w-full h-64 object-cover rounded-md mb-4 "
                         />
                         <h3 className="text-xl font-semibold mb-2 text-orange-500">Room Type : {room.roomType}</h3>
                         <div className="text-gray-500 text-sm mb-2">

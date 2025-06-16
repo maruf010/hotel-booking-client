@@ -9,10 +9,17 @@ const HotelDetails = () => {
     };
 
     return (
-        <div>
-            <h2 className='text-xl font-medium text-orange-500'>Hotel Address : </h2>
-            <div className='space-y-2'>
-                <p>{hotel.name}, New market road, Boalia, Rajshahi</p>
+        <div className='lg:max-w-11/12 lg:mx-auto mx-3 md:flex justify-between gap-4'>
+            <div className='flex-1 border p-3 border-orange-400 rounded-xl'>
+                <h2 className='text-3xl font-bold text-orange-500'>Contact Us </h2>
+                <div className='space-y-4 md:mt-10'>
+                    <h2 className='text-xl text-orange-500 font-medium mt-3'><span className='text-blue-500 font-bold'>Hotel</span>SilkCity</h2>
+                    <h3 className='text-green-500'><span className='font-bold text-gray-500'>Mail : </span>silkcity@info.com</h3>
+                    <h2 className='text-green-500'><span className='font-bold text-gray-500'>Phone : </span>01700-100000</h2>
+                    <p className='text-green-500'><span className='font-bold text-gray-500'>Address : </span> {hotel.name}, New market road, Boalia-6000, Rajshahi, Bangladesh</p>
+                </div>
+            </div>
+            <div className='mt-4 md:mt-0'>
                 <HotelMap lat={hotel.lat} lng={hotel.lng} hotelName={hotel.name} />
             </div>
         </div>

@@ -4,6 +4,8 @@ import FeaturedRooms from '../components/FeaturedRooms';
 import { Helmet } from 'react-helmet-async';
 import ReviewCarousel from '../components/ReviewCarousel';
 import VisitModal from '../components/VisitModal';
+import ServiceSection from '../components/ServiceSection';
+import HotelDetails from '../components/HotelDetails';
 
 
 const Home = () => {
@@ -17,6 +19,8 @@ const Home = () => {
                 <Banner></Banner>
                 <FeaturedRooms></FeaturedRooms>
                 <ReviewCarousel></ReviewCarousel>
+                <ServiceSection></ServiceSection>
+                <HotelDetails></HotelDetails>
             </div>
         </>
     );
