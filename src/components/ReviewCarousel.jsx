@@ -33,7 +33,7 @@ const ReviewCarousel = () => {
     };
 
     return (
-        <div className='lg:max-w-11/12 lg:mx-auto mx-3 py-10'>
+        <div className='lg:max-w-11/12 lg:mx-auto mx-3 py-10 overflow-hidden'>
             <h2 className='text-3xl font-bold text-center mb-6'>User Top Reviews</h2>
             <Carousel
                 responsive={responsive}

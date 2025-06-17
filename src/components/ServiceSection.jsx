@@ -21,7 +21,7 @@ const ServiceSection = () => {
                     </p>
 
                     {/* Services Grid */}
-                    <div className="grid sm:grid-cols-2 gap-6">
+                    <div className="grid sm:grid-cols-2 gap-6 overflow-hidden">
                         <div data-aos="fade-down-right" data-aos-offset="100" className="p-5 border border-orange-300 rounded-lg shadow hover:shadow-lg transition">
                             <FaShieldAlt className="text-2xl text-green-600 mb-2" size={30} />
                             <h4 className="font-semibold mb-1">Booking Service</h4>

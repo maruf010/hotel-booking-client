@@ -4,6 +4,9 @@ import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../Contexts/AuthContext';
 import { Helmet } from 'react-helmet-async';
+import loginAnimation from '../assets/lotify/loginLotify.json';
+import Lottie from 'lottie-react';
+
 
 const Login = () => {
     const { login, loginWithGoogle } = useContext(AuthContext)
@@ -51,8 +54,8 @@ const Login = () => {
             <Helmet>
                 <title>Hotel Silk City | Login</title>
             </Helmet>
-            <div className='font-web flex justify-center items-center min-h-screen font-three md:mx-auto mx-3 '>
-                <div className='md:mx-auto card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
+            <div className='font-web flex justify-evenly items-center min-h-screen  md:mx-auto mx-3 '>
+                <div className=' card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                     <div className='card-body'>
                         <h1 className='text-3xl text-orange-500 font-bold text-center mb-2'>
                             Login your Account!
@@ -149,6 +152,9 @@ const Login = () => {
                             </p>
                         </form>
                     </div>
+                </div>
+                <div className='w-[300px] h-[300px] md:w-[400px] md:h-[400px]'>
+                    <Lottie animationData={loginAnimation} loop={true} />
                 </div>
             </div>
 
