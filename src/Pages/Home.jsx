@@ -15,7 +15,7 @@ const Home = () => {
             <Helmet>
                 <title>Hotel Silk City | Home</title>
             </Helmet>
-            <div>
+            <div className='overflow-hidden'>
                 <VisitModal></VisitModal>
                 <Banner></Banner>
                 <PromotionAdd></PromotionAdd>

@@ -39,7 +39,7 @@ const VisitModal = () => {
                         <img
                             src={ad}
                             alt="Welcome"
-                            className="max-w-full h-auto rounded"
+                            className="w-full h-auto rounded"
                         />
                     </div>
                 </div>
