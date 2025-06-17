@@ -68,9 +68,9 @@ const Register = () => {
     return (
         <>
             <Helmet>
-                <title>Hotel Silk City | Register</title>
+                <title >Hotel Silk City | Register</title>
             </Helmet>
-            <div className='min-h-screen justify-center flex items-center font-three md:mx-auto mx-3 card'>
+            <div className='font-web min-h-screen justify-center flex items-center font-three md:mx-auto mx-3 card'>
                 <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                     <div className='card-body'>
                         <h1 className='text-3xl font-bold text-center mb-2 text-orange-500'>

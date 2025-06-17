@@ -102,7 +102,7 @@ const MyBooking = () => {
     return (
         <>
             <Helmet><title>Hotel Silk City | My Booking</title></Helmet>
-            <div className="min-h-screen mx-2 lg:max-w-11/12 lg:mx-auto">
+            <div className="font-web min-h-screen mx-2 lg:max-w-11/12 lg:mx-auto">
                 {/* Toggle Buttons */}
                 <div className="flex items-center justify-between my-5">
                     <div className='flex'>

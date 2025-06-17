@@ -58,7 +58,7 @@ const Navbar = () => {
 
 
     return (
-        <div className=" navbar shadow px-5 md:px-7 lg:py-3 lg:px-20 p-0 font-one bg-white/30 backdrop-blur-sm">
+        <div className="font-web navbar shadow px-5 md:px-7 lg:py-3 lg:px-20 p-0  bg-white/30 backdrop-blur-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="mr-2 lg:hidden cursor-pointer">
@@ -66,21 +66,21 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow ">
                         {links}
                         {user ? (
                             <button
                                 onClick={handleLogout}
-                                className='text-blue-500 ml-2 pb-2 text-[16px] text-start cursor-pointer mt-1'
+                                className='text-blue-500 ml-2 pb-2 text-[16px] text-start cursor-pointer mt-2 hover:text-green-500'
                             >
                                 Logout
                             </button>
                         ) : (
-                            <div className='space-y-2 mt-1'>
+                            <div className='space-y-2 mt-2'>
                                 <div>
                                     <Link
                                         to='/login'
-                                        className='ml-2 pb-2 text-start cursor-pointer text-[16px]'
+                                        className='ml-2 pb-2 text-start cursor-pointer text-[16px] text-blue-500 hover:text-green-500'
                                     >
                                         Login
                                     </Link>
@@ -88,7 +88,7 @@ const Navbar = () => {
                                 <div>
                                     <Link
                                         to='/register'
-                                        className='ml-2 pb-2 text-start cursor-pointer text-[16px]'
+                                        className='ml-2 pb-2 text-start cursor-pointer text-[16px] text-blue-500 hover:text-green-500'
                                     >
                                         Register
                                     </Link>
@@ -100,12 +100,15 @@ const Navbar = () => {
                 <Link to='/'>
                     <div className='flex-1 flex items-center'>
                         <img src={logo} alt="Coming soon" className=" w-14 h-14  hidden md:flex" />
-                        <span className='text-blue-500 font-medium ml-1 text-lg lg:text-2xl'>HOTEL<span className='text-orange-500'>SilkCity</span></span>
+                        <span className='text-blue-500 font-medium ml-1 text-lg lg:text-2xl font-des' onClick={() => {
+                            ; (prev) => !prev
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                        }}>HOTEL<span className='text-orange-500'>SilkCity</span></span>
                     </div>
                 </Link>
             </div>
             <div className="navbar-end hidden lg:flex mr-4">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-2 rounded-xl  font-medium">
                     {links}
                 </ul>
             </div>
@@ -246,7 +249,7 @@ const Navbar = () => {
                                 <img alt='coming' src={user ? user.photoURL : "https://i.ibb.co.com/84TKBCHZ/user-icon-1024x1024-dtzturco.png"} />
 
                                 {/* hover profile name */}
-                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-orange-500 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15'>
+                                <div className='absolute top-full  transform -translate-x-1/2 mt-5 px-3 bg-orange-500 text-white py-1 text-sm rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap  right-0  -mr-15 font-des'>
                                     {user ? user.displayName : 'Please Login'}
                                 </div>
                             </div>
@@ -257,7 +260,7 @@ const Navbar = () => {
                         >
                             <div>
                                 {user ? (
-                                    <div>
+                                    <div className=''>
                                         <Link to='/profile' className='text-lg'>
                                             <div className=' px-2 font-medium py-2 rounded-lg text-orange-500  hover:text-green-500 cursor-pointer transition-colors delay-100 duration-200'>
                                                 Profile
@@ -300,7 +303,7 @@ const Navbar = () => {
                                 <Link
                                     to='/login'
                                     className='bg-orange-600 px-4 py-2 rounded-lg hover:text-orange-500 ml-4 
-                                    border-2 border-orange-500 transition-colors delay-100 duration-200 hover:border-2 hover:bg-white cursor-pointer text-white'
+                                    border-2 border-orange-500 transition-colors delay-100 duration-200 hover:border-2 hover:bg-white cursor-pointer text-white font-medium '
                                 >
                                     Login
                                 </Link>
@@ -308,7 +311,7 @@ const Navbar = () => {
                             <div>
                                 <Link
                                     to='/register'
-                                    className='bg-white px-4 py-2 rounded-lg text-orange-500 ml-4 border-2 hover:bg-orange-600  cursor-pointer   transition-colors delay-100 duration-200 hover:text-white
+                                    className='font-medium bg-white px-4 py-2 rounded-lg text-orange-500 ml-4 border-2 hover:bg-orange-600  cursor-pointer   transition-colors delay-100 duration-200 hover:text-white
                                     '
                                 >
                                     Register

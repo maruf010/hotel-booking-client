@@ -40,7 +40,7 @@ const Banner = () => {
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
             onAutoplayTimeLeft={onAutoplayTimeLeft}
-            className="mySwiper min-h-screen"
+            className="mySwiper min-h-screen font-web"
             breakpoints={{
                 320: { slidesPerView: 1 },
                 640: { slidesPerView: 1 },

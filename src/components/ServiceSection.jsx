@@ -13,7 +13,7 @@ const ServiceSection = () => {
     ];
 
     return (
-        <section className="py-16 mx-3 md:px-20">
+        <section className="py-16 mx-3 md:px-20 font-web">
             <h2 className="text-3xl font-bold text-center my-5">Our Services </h2>
             <div className="grid md:grid-cols-2 gap-10 items-center ">
                 {/* Left Side Content */}

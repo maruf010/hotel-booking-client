@@ -51,7 +51,7 @@ const Login = () => {
             <Helmet>
                 <title>Hotel Silk City | Login</title>
             </Helmet>
-            <div className='flex justify-center items-center min-h-screen font-three md:mx-auto mx-3 '>
+            <div className='font-web flex justify-center items-center min-h-screen font-three md:mx-auto mx-3 '>
                 <div className='md:mx-auto card  max-w-sm bg-base-100 w-full  shrink-0 shadow-[0px_0px_20px_0px_rgba(211,117,44,0.3),0px_0px_40px_0px_rgba(156,39,176,0.1)]'>
                     <div className='card-body'>
                         <h1 className='text-3xl text-orange-500 font-bold text-center mb-2'>

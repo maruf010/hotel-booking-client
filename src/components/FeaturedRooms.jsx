@@ -34,11 +34,11 @@ const FeaturedRooms = () => {
     }
 
     return (
-        <section className="lg:max-w-11/12 lg:mx-auto mx-3 min-h-screen py-8">
+        <section className="lg:max-w-11/12 lg:mx-auto mx-3 min-h-screen py-8 font-web">
             <h2 className="text-3xl font-bold mb-6 text-center">🌟 Featured Rooms</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => (
-                    <div key={room._id} className="transform transition-transform duration-500 hover:scale-107 bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4">
+                    <div key={room._id} className=" bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4">
                         <img
                             src={room.image}
                             alt="soon"

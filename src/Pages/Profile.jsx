@@ -15,7 +15,7 @@ const Profile = () => {
             <Helmet>
                 <title>Profile</title>
             </Helmet>
-            <div className='font-three min-h-screen  bg-orange-100 py-10 px-3 md:px-0'>
+            <div className='font-des min-h-screen  bg-orange-100 py-10 px-3 md:px-0'>
                 <h2 className='text-3xl font-bold text-orange-500 text-center mb-5 md:mb-16 mt-10'>User Profile</h2>
                 <div className='flex justify-center'>
                     <div className='md:flex justify-evenly items-center  '>

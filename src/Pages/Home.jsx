@@ -6,6 +6,7 @@ import ReviewCarousel from '../components/ReviewCarousel';
 import VisitModal from '../components/VisitModal';
 import ServiceSection from '../components/ServiceSection';
 import HotelDetails from '../components/HotelDetails';
+import PromotionAdd from '../components/PromotionAdd';
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
             <div>
                 <VisitModal></VisitModal>
                 <Banner></Banner>
+                <PromotionAdd></PromotionAdd>
                 <FeaturedRooms></FeaturedRooms>
                 <ReviewCarousel></ReviewCarousel>
                 <ServiceSection></ServiceSection>

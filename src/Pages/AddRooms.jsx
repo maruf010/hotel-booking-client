@@ -189,7 +189,7 @@ const AddRooms = () => {
             <Helmet>
                 <title>Hotel Silk City | Add Room</title>
             </Helmet>
-            <div className="mx-3 lg:w-11/12 lg:mx-auto min-h-screen">
+            <div className="font-web mx-3 lg:w-11/12 lg:mx-auto min-h-screen">
                 <h1 className="text-3xl text-center my-5 font-bold text-orange-500">Add Room now!</h1>
                 <form onSubmit={handleAddRoom}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

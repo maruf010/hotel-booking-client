@@ -51,7 +51,7 @@ const AllRooms = () => {
                 <title>Hotel Silk City | All Rooms</title>
             </Helmet>
 
-            <div className="min-h-screen lg:max-w-11/12 lg:mx-auto">
+            <div className="font-web min-h-screen lg:max-w-11/12 lg:mx-auto">
                 <h2 className="text-center text-3xl font-medium my-5 text-orange-500">All Rooms</h2>
 
                 {/* Price Filter Dropdown */}
