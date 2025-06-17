@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Profile = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
+    // console.log(user);
 
 
     return (

@@ -14,7 +14,7 @@ import Loading from '../components/Loading';
 
 const MyBooking = () => {
     const { user, loading } = useContext(AuthContext);
-    console.log(user.photoURL);
+    // console.log(user.photoURL);
 
     const [bookings, setBookings] = useState([]);
     const [showModal, setShowModal] = useState(false);

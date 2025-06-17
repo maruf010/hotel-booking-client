@@ -7,7 +7,7 @@ import { myAddRoomPromise } from '../Api/myAddRoomPromise';
 
 const MyAddRooms = () => {
     const { user } = useContext(AuthContext);
-    console.log(user.email);
+    // console.log(user.email);
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ const MyAddRooms = () => {
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {rooms?.map(room => (
-                        <div key={room._id} className="bg-base-200 p-4 rounded-lg shadow">
+                        <div key={room._id} className="bg-base-200 p-4 rounded-lg shadow" data-aos="fade-up" data-aos-offset="100">
                             <img src={room.image} alt={room.roomType} className="w-full h-40 object-cover rounded mb-3" />
                             <h3 className="text-xl font-semibold mb-1">{room.roomType}</h3>
                             <p className="text-sm text-gray-600 mb-1"><strong>Features:</strong>

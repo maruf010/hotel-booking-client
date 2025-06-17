@@ -38,7 +38,7 @@ const FeaturedRooms = () => {
             <h2 className="text-3xl font-bold mb-6 text-center">🌟 Featured Rooms</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {rooms.map((room) => (
-                    <div key={room._id} className=" bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4">
+                    <div key={room._id} className=" bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4" data-aos="fade-up" data-aos-offset="100">
                         <img
                             src={room.image}
                             alt="soon"

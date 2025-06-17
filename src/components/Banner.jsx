@@ -25,6 +25,7 @@ const Banner = () => {
             once: true,
         });
     }, []);
+    
     return (
         <Swiper
             spaceBetween={30}
