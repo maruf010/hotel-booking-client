@@ -16,10 +16,10 @@ const Navbar = () => {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                 }}
 
-                className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500  ' : 'hover:text-green-500  text-blue-500 transition-colors delay-100 duration-200')}>Home</NavLink>
-            <NavLink to='/allRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>All Rooms</NavLink>
-            <NavLink to='/addRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>Add Room</NavLink>
-            <NavLink to='/myBooking' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-blue-500 transition-colors delay-100 duration-200')}>My Booking</NavLink>
+                className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500  ' : 'hover:text-green-500  text-gray-300 transition-colors delay-100 duration-200')}>Home</NavLink>
+            <NavLink to='/allRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-gray-300 transition-colors delay-100 duration-200')}>All Rooms</NavLink>
+            <NavLink to='/addRooms' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-gray-300 transition-colors delay-100 duration-200')}>Add Room</NavLink>
+            <NavLink to='/myBooking' className={({ isActive }) => (isActive ? 'text-orange-500 lg:border-b lg:border-b-orange-500 ' : 'hover:text-green-500 text-gray-300 transition-colors delay-100 duration-200')}>My Booking</NavLink>
         </div>
     )
     const handleLogout = () => {
@@ -58,7 +58,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="font-web navbar shadow px-5 md:px-7 lg:py-3 lg:px-20 p-0  bg-white/30 backdrop-blur-sm">
+        <div className="font-web navbar shadow px-5 md:px-7 lg:py-3 lg:px-20 p-0  backdrop-blur-sm bg-blue-950">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="mr-2 lg:hidden cursor-pointer">
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </div>
                 <Link to='/'>
                     <div className='flex-1 flex items-center'>
-                        <img src={logo} alt="Coming soon" className=" w-14 h-14  hidden md:flex" />
+                        <img src={logo} alt="Coming soon" className="rounded-2xl w-14 h-14  hidden md:flex" />
                         <span className='text-blue-500 font-medium ml-1 text-lg lg:text-2xl font-des' onClick={() => {
                             ; (prev) => !prev
                             window.scrollTo({ top: 0, behavior: 'smooth' })

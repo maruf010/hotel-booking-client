@@ -45,7 +45,7 @@ const ReviewCarousel = () => {
                 removeArrowOnDeviceType={["tablet", "mobile"]}
             >
                 {reviews.map((review, index) => (
-                    <div key={index} className=" p-7 rounded-lg m-2 shadow-lg">
+                    <div key={index} className="border border-orange-300 p-7 rounded-lg m-2 shadow-lg">
                         <div className="flex mb-2">
                             {[...Array(5)].map((_, i) => (
                                 <FaStar
