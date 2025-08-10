@@ -3,6 +3,10 @@ import { FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
 import { AuthContext } from '../Contexts/AuthContext';
 import Loading from './Loading';
+import { MdOutlineAttachMoney } from "react-icons/md";
+import { ImCheckboxChecked } from "react-icons/im";
+import { MdFeaturedPlayList } from "react-icons/md";
+
 
 const FeaturedRooms = () => {
     const { loading } = useContext(AuthContext)
@@ -35,33 +39,44 @@ const FeaturedRooms = () => {
 
     return (
         <section className="lg:max-w-11/12 lg:mx-auto mx-3 min-h-screen py-8 font-web">
-            <h2 className="text-3xl font-bold mb-6 text-center">🌟 Featured Rooms</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <h2 className="text-3xl font-bold mb-6 text-center text-blue-900">🌟 Featured <span className='text-orange-500'>Rooms</span></h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {rooms.map((room) => (
-                    <div key={room._id} className=" bg-base-200  hover:bg-orange-100  rounded-xl shadow p-4" data-aos="fade-up" data-aos-offset="100">
+                    <div key={room._id} className=" bg-base-200 rounded-xl shadow p-4" data-aos="fade-up" data-aos-offset="100">
                         <img
                             src={room.image}
                             alt="soon"
                             className="w-full h-64 object-cover rounded-md mb-4 "
                         />
                         <h3 className="text-xl font-semibold mb-2 text-orange-500">Room Type : {room.roomType}</h3>
-                        <div className="text-gray-500 text-sm mb-2">
+                        <div className="text-gray-500 text-sm mb-2 flex items-center gap-2">
+                            <div>
+                                <MdFeaturedPlayList />
+                            </div>
                             <strong>Features:</strong>
-                            {
-                                room?.features.slice(0, 3).map((feature, index) => (
-                                    <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
-                                ))
-                            }
+                            <div>
+                                {
+                                    room?.features.slice(0, 3).map((feature, index) => (
+                                        <span key={index} className="text-blue-500 badge badge-outline m-1">{feature}</span>
+                                    ))
+                                }
+                            </div>
                         </div>
-                        <div className="text-gray-500 text-sm mb-2">
+                        <div className="text-gray-500 text-sm mb-2 flex items-center gap-2">
+                            <div>
+                                <ImCheckboxChecked />
+                            </div>
                             <strong>Facilities:</strong>
-                            {
-                                room?.facilities.slice(0, 3).map((facility, index) => (
-                                    <span key={index} className="text-blue-500 badge badge-outline m-1">{facility}</span>
-                                ))
-                            }
+                            <div>
+                                {
+                                    room?.facilities.slice(0, 3).map((facility, index) => (
+                                        <span key={index} className="text-blue-500 badge badge-outline m-1">{facility}</span>
+                                    ))
+                                }
+                            </div>
                         </div>
-                        <div className="text-gray-500 text-sm mb-2">
+                        <div className="text-gray-500 text-sm mb-2 flex items-center">
+                            <div><MdOutlineAttachMoney size={20} /></div>
                             <strong>Price:</strong> {room.price} bdt/night
                         </div>
                         <div className="flex items-center mb-3">
@@ -79,7 +94,7 @@ const FeaturedRooms = () => {
 
                         <button
                             onClick={() => navigate(`/rooms/${room._id}`)}
-                            className="btn  text-white border-none bg-orange-500 w-full"
+                            className="btn  text-white border-none bg-blue-900 hover:bg-blue-950 w-full"
                         >
                             Book Now
                         </button>

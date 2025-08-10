@@ -9,10 +9,10 @@ const PromotionAdd = () => {
         <div className='font-web lg:max-w-10/12 lg:mx-auto mx-3 my-10 lg:my-16'>
             <h2 className='text-3xl font-bold  font-web text-center my-5 text-blue-900'>Special <span className='text-orange-500'>Offer</span></h2>
             <div className='md:grid grid-cols-2 gap-5 md:gap-10 max-w-full overflow-hidden'>
-                <div className='lg:p-16' data-aos="fade-down-right" data-aos-offset="100">
+                <div className='lg:p-16' data-aos="fade-right" data-aos-offset="100">
                     <img className='w-full lg:h-80' src={offer} alt="upcoming" />
                 </div>
-                <div className='relative mt-5 md:mt-0 flex justify-center items-center' data-aos="fade-down-left" data-aos-offset="100">
+                <div className='relative mt-5 md:mt-0 flex justify-center items-center' data-aos="fade-left" data-aos-offset="100">
                     <div>
                         <h2 className='text-4xl font-bold'>VISIT HOTEL SILKCITY WEBSITE
                         </h2>
@@ -24,7 +24,7 @@ const PromotionAdd = () => {
                 </div>
             </div>
             <div className='hidden md:grid grid-cols-2 gap-5 md:gap-10 max-w-full overflow-hidden '>
-                <div className='flex justify-center items-center' data-aos="fade-down-right" data-aos-offset="100">
+                <div className='flex justify-center items-center' data-aos="fade-right" data-aos-offset="100">
                     <div>
                         <h2 className='text-4xl font-bold'>EASILY SUBSCRIBE TO HOTEL SILKCITY </h2>
                         <p className='text-2xl my-5 lg:my-10'>Signing up is quick and hassle-free! Simply enter your details to subscribe and unlock exclusive deals, personalized recommendations, and seamless booking experiences. Stay updated with the latest offers and hotel perks effortlessly.</p>
@@ -33,15 +33,15 @@ const PromotionAdd = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='lg:p-16 mt-5 md:mt-0' data-aos="fade-down-left" data-aos-offset="100">
+                <div className='lg:p-16 mt-5 md:mt-0' data-aos="fade-left" data-aos-offset="100">
                     <img className='w-full lg:h-80' src={offer2} alt="upcoming" />
                 </div>
             </div>
             <div className='md:hidden  gap-5 md:gap-10 max-w-full overflow-hidden '>
-                <div className='lg:p-20 mt-5 md:mt-0' data-aos="fade-down-left" data-aos-offset="100">
+                <div className='lg:p-20 mt-5 md:mt-0' data-aos="fade-left" data-aos-offset="100">
                     <img className='w-full lg:h-80' src={offer2} alt="upcoming" />
                 </div>
-                <div className='flex justify-center items-center' data-aos="fade-down-right" data-aos-offset="100">
+                <div className='flex justify-center items-center' data-aos="fade-right" data-aos-offset="100">
                     <div>
                         <h2 className='text-4xl font-bold'>EASILY SUBSCRIBE TO HOTEL SILKCITY </h2>
                         <p className='text-2xl my-5 lg:my-10'>Signing up is quick and hassle-free! Simply enter your details to subscribe and unlock exclusive deals, personalized recommendations, and seamless booking experiences. Stay updated with the latest offers and hotel perks effortlessly.</p>
