@@ -49,7 +49,7 @@ const ContactUs = () => {
         <div className="min-h-screen  flex justify-center items-center py-8 px-3 lg:w-11/12 lg:mx-auto">
             <div className=" w-full  shadow border border-gray-200 rounded-lg p-5 lg:p-10">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-gray-900 mt-2">CONTACT US</h1>
+                    <h1 className="text-3xl font-bold mt-2 text-blue-800">Contact <span className="text-orange-500">Us</span></h1>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,7 +92,7 @@ const ContactUs = () => {
                             ></textarea>
                             <button
                                 type="submit"
-                                className="w-full bg-gray-900 text-white py-3 rounded-md hover:bg-gray-800 transition"
+                                className="w-full bg-blue-900 text-white py-3 rounded-md hover:bg-blue-800 transition cursor-pointer"
                             >
                                 Send Message
                             </button>
@@ -101,7 +101,7 @@ const ContactUs = () => {
                     </div>
 
                     <div>
-                        <h2 className="text-sm font-semibold tracking-wider text-gray-500 mb-6">
+                        <h2 className="text-sm font-semibold tracking-wider text-gray-400 mb-6">
                             CONTACT DETAILS
                         </h2>
                         <div className='mt-4 md:mt-0' data-aos="fade-down-left" data-aos-offset="100">
@@ -109,8 +109,8 @@ const ContactUs = () => {
                         </div>
                         <div className=" text-gray-700 grid grid-cols-2 xl:grid-cols-4 gap-5 mt-5">
                             <div>
-                                <h3 className="font-bold">Rajshahi,Bangladesh</h3>
-                                <p>233 North Avenue E.<br />Ranibazar, RH 07090</p>
+                                <h3 className="font-bold">Rajshahi</h3>
+                                <p>Ranibazar, RH 07090</p>
                             </div>
                             <div>
                                 <h3 className="font-bold">Summit</h3>
@@ -125,7 +125,7 @@ const ContactUs = () => {
                                     hotel.info@gmail.com
                                 </a>
                                 <br />
-                                <span>(+880) 1300-100000</span>
+                                <span>(+880)1300-100000</span>
                             </div>
                         </div>
                     </div>
