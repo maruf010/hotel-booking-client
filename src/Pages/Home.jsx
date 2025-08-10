@@ -23,7 +23,6 @@ const Home = () => {
                 <FeaturedRooms></FeaturedRooms>
                 <ReviewCarousel></ReviewCarousel>
                 <ServiceSection></ServiceSection>
-                <HotelDetails></HotelDetails>
                 <ContactUs></ContactUs>
             </div>
         </>
