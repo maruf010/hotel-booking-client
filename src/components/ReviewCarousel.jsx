@@ -34,7 +34,7 @@ const ReviewCarousel = () => {
 
     return (
         <div className='lg:max-w-11/12 lg:mx-auto mx-3 py-10 overflow-hidden'>
-            <h2 className='text-3xl font-bold text-center mb-6'>User Top Reviews</h2>
+            <h2 className='text-3xl font-bold text-center mb-6 text-blue-900'>User Top <span className='text-orange-500'>Reviews</span></h2>
             <Carousel
                 responsive={responsive}
                 autoPlay={true}
@@ -58,10 +58,10 @@ const ReviewCarousel = () => {
                         <p className="italic text-green-600 text-xl">"{review.comment}"</p>
                         <div className='flex gap-3 mt-3'>
                             <div>
-                                <img className='h-16 w-16 rounded-full' src={review.photo} alt="soon" />
+                                <img className='h-16 w-16 rounded-full border p-0.5 border-orange-500' src={review.photo} alt="soon" />
                             </div>
                             <div>
-                                <p className=" text-gray-500 mt-2  text-lg">- {review.user}</p>
+                                <p className=" text-blue-800 mt-2  text-lg">- {review.user}</p>
                                 <p className=" text-gray-400  text-sm">
                                     {new Date(review.timestamp).toLocaleString()}
                                 </p>

@@ -175,9 +175,9 @@ const MyBooking = () => {
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {bookings.map((booking, index) => (
-                            <div key={index} className="border rounded-lg p-4 shadow-md">
+                            <div key={index} className="border border-blue-900 rounded-lg p-4 shadow-md">
                                 <img src={booking?.image} alt="Room" className="w-full h-48 object-cover rounded mb-4" />
-                                <h3 className="text-xl font-semibold mb-2">{booking.roomType}</h3>
+                                <h3 className="text-xl font-semibold mb-2 text-orange-600">{booking.roomType}</h3>
                                 <p><strong>Date:</strong> {new Date(booking.date).toDateString()}</p>
                                 <p><strong>Price:</strong> {booking.price} BDT</p>
                                 <div className="mt-3 flex gap-3 justify-end flex-wrap">

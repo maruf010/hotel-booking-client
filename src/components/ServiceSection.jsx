@@ -8,8 +8,8 @@ const ServiceSection = () => {
 
     return (
         <section className="py-16 mx-3 md:px-20 font-web">
-            <h2 className="text-3xl font-bold text-center my-5">Our Services </h2>
-            <div className="grid md:grid-cols-2 gap-10 items-center ">
+            <h2 className="text-3xl font-bold text-center my-5 text-blue-900">Our <span className="text-orange-500">Services</span> </h2>
+            <div className="grid lg:grid-cols-2 gap-10 items-center ">
                 {/* Left Side Content */}
                 <div>
                     <h2 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4">

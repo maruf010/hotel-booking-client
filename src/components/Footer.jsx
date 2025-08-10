@@ -4,14 +4,14 @@ import logo from '../assets/logo.jpg';
 
 const Footer = () => {
     return (
-        <footer className="lg:mt-20 divide-y max-w-11/12 mx-auto font-web">
+        <footer className="lg:mt-20 divide-y divide-blue-800 max-w-11/12 mx-auto font-web">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-5 py-5">
                 <div >
                     <span className="self-center text-2xl lg:text-3xl text-orange-500 font-medium"> <img src={logo} alt="Hotel Silk City" className="inline-block w-16 h-16 font-one" /> Hotel_Silk_City</span>
                 </div>
                 <div className="">
                     <h3 className="tracking-wide uppercase text-orange-500 font-medium mb-2">Rooms</h3>
-                    <ul className="space-y-1">
+                    <ul className="space-y-1 text-blue-900">
                         <li>
                             <a rel="noopener noreferrer" href="#">Features</a>
                         </li>
@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
                 <div className="">
                     <h3 className="tracking-wide uppercase text-orange-500 font-medium mb-2">Company</h3>
-                    <ul className="space-y-1">
+                    <ul className="space-y-1 text-blue-900">
                         <li>
                             <a rel="noopener noreferrer" href="#">Privacy</a>
                         </li>
@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
                 <div className="">
                     <div className="uppercase text-orange-500 font-medium mb-2">Social media</div>
-                    <div className="flex justify-start space-x-3">
+                    <div className="flex justify-start space-x-3 text-blue-900">
                         <a rel="noopener noreferrer" href="https://web.facebook.com/maruf.h.bijoy" target='_blank' title="Facebook" className="flex items-center p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 32 32" className="w-8 h-8 fill-current">
                                 <path d="M32 16c0-8.839-7.167-16-16-16-8.839 0-16 7.161-16 16 0 7.984 5.849 14.604 13.5 15.803v-11.177h-4.063v-4.625h4.063v-3.527c0-4.009 2.385-6.223 6.041-6.223 1.751 0 3.584 0.312 3.584 0.312v3.937h-2.021c-1.984 0-2.604 1.235-2.604 2.5v3h4.437l-0.713 4.625h-3.724v11.177c7.645-1.199 13.5-7.819 13.5-15.803z"></path>
@@ -59,7 +59,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="py-6 text-sm text-center dark:text-gray-600">© 1968 Company Co. All rights reserved.</div>
+            <div className="py-6 text-sm text-center text-gray-600">© 1968 Company Co. All rights reserved.</div>
         </footer>
     );
 };

@@ -227,7 +227,7 @@ const AddRooms = () => {
                     <input type="submit" value="Add Room" className="btn bg-orange-500 text-white mt-4 w-full" />
                 </form>
                 <Link to="/">
-                    <button className="btn btn-primary mt-5 w-full">Back to Home</button>
+                    <button className="btn bg-blue-900 text-white mt-5 w-full">Back to Home</button>
                 </Link>
             </div>
         </>

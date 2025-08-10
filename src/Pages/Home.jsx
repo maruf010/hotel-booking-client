@@ -7,6 +7,7 @@ import VisitModal from '../components/VisitModal';
 import ServiceSection from '../components/ServiceSection';
 import HotelDetails from '../components/HotelDetails';
 import PromotionAdd from '../components/PromotionAdd';
+import ContactUs from '../components/Contact';
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
                 <ReviewCarousel></ReviewCarousel>
                 <ServiceSection></ServiceSection>
                 <HotelDetails></HotelDetails>
+                <ContactUs></ContactUs>
             </div>
         </>
     );
